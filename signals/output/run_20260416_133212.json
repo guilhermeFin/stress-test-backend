@@ -1,0 +1,2377 @@
+{
+  "run_id": "20260416_133212",
+  "run_at": "2026-04-16T13:32:12.685126",
+  "hours_back": 24,
+  "summary": {
+    "macro_series_pulled": 6,
+    "filings_found": 4,
+    "news_stories": 129,
+    "signals_generated": 30
+  },
+  "macro_data": [
+    {
+      "series_id": "FEDFUNDS",
+      "label": "Federal Funds Rate",
+      "units": "%",
+      "current": 3.64,
+      "previous": 3.64,
+      "change": 0.0,
+      "pct_change": 0.0,
+      "direction": "flat",
+      "as_of": "2026-03-01",
+      "prior_date": "2026-02-01",
+      "affected_assets": [
+        "TLT",
+        "LQD",
+        "VNQ",
+        "NEE",
+        "JPM"
+      ],
+      "impact_signals": {
+        "TLT": "bullish",
+        "LQD": "bullish",
+        "VNQ": "bullish",
+        "NEE": "bullish",
+        "JPM": "bearish"
+      },
+      "source": "FRED"
+    },
+    {
+      "series_id": "CPIAUCSL",
+      "label": "CPI (All Urban Consumers)",
+      "units": "Index",
+      "current": 330.293,
+      "previous": 327.46,
+      "change": 2.833,
+      "pct_change": 0.8651,
+      "direction": "increase",
+      "as_of": "2026-03-01",
+      "prior_date": "2026-02-01",
+      "affected_assets": [
+        "GLD",
+        "TLT",
+        "BTC"
+      ],
+      "impact_signals": {
+        "GLD": "bullish",
+        "TLT": "bearish",
+        "BTC": "mixed"
+      },
+      "source": "FRED"
+    },
+    {
+      "series_id": "UNRATE",
+      "label": "Unemployment Rate",
+      "units": "%",
+      "current": 4.3,
+      "previous": 4.4,
+      "change": -0.1,
+      "pct_change": -2.2727,
+      "direction": "decrease",
+      "as_of": "2026-03-01",
+      "prior_date": "2026-02-01",
+      "affected_assets": [
+        "AMZN",
+        "JPM",
+        "VNQ"
+      ],
+      "impact_signals": {
+        "AMZN": "bullish",
+        "JPM": "bullish"
+      },
+      "source": "FRED"
+    },
+    {
+      "series_id": "T10YIE",
+      "label": "10-Year Breakeven Inflation Rate",
+      "units": "%",
+      "current": 2.39,
+      "previous": 2.37,
+      "change": 0.02,
+      "pct_change": 0.8439,
+      "direction": "increase",
+      "as_of": "2026-04-15",
+      "prior_date": "2026-04-14",
+      "affected_assets": [
+        "GLD",
+        "TLT",
+        "VNQ"
+      ],
+      "impact_signals": {
+        "GLD": "bullish",
+        "TLT": "bearish"
+      },
+      "source": "FRED"
+    },
+    {
+      "series_id": "DGS10",
+      "label": "10-Year Treasury Yield",
+      "units": "%",
+      "current": 4.26,
+      "previous": 4.3,
+      "change": -0.04,
+      "pct_change": -0.9302,
+      "direction": "decrease",
+      "as_of": "2026-04-14",
+      "prior_date": "2026-04-13",
+      "affected_assets": [
+        "TLT",
+        "LQD",
+        "VNQ",
+        "NEE",
+        "GLD"
+      ],
+      "impact_signals": {
+        "TLT": "bullish",
+        "LQD": "bullish",
+        "VNQ": "bullish",
+        "NEE": "bullish",
+        "GLD": "bullish"
+      },
+      "source": "FRED"
+    },
+    {
+      "series_id": "BAMLH0A0HYM2",
+      "label": "High Yield Credit Spread (OAS)",
+      "units": "bps",
+      "current": 2.85,
+      "previous": 2.84,
+      "change": 0.01,
+      "pct_change": 0.3521,
+      "direction": "increase",
+      "as_of": "2026-04-15",
+      "prior_date": "2026-04-14",
+      "affected_assets": [
+        "LQD",
+        "JPM",
+        "AMZN"
+      ],
+      "impact_signals": {
+        "LQD": "bearish",
+        "JPM": "bearish"
+      },
+      "source": "FRED"
+    }
+  ],
+  "filings": [
+    {
+      "ticker": "JPM",
+      "company": "JPMORGAN CHASE & CO",
+      "cik": "0000019617",
+      "form": "8-K",
+      "priority": "high",
+      "filing_date": "2026-04-14",
+      "accession": "0001628280-26-024990",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/0000019617/000162828026024990/jpm-20260414.htm",
+      "flagged_8k_items": [
+        {
+          "code": "2.02",
+          "description": "Results of operations (earnings release)"
+        }
+      ],
+      "is_earnings": true,
+      "source": "SEC_EDGAR"
+    },
+    {
+      "ticker": "JNJ",
+      "company": "JOHNSON & JOHNSON",
+      "cik": "0000200406",
+      "form": "8-K",
+      "priority": "high",
+      "filing_date": "2026-04-14",
+      "accession": "0000200406-26-000076",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/0000200406/000020040626000076/jnj-20260414.htm",
+      "flagged_8k_items": [
+        {
+          "code": "2.02",
+          "description": "Results of operations (earnings release)"
+        },
+        {
+          "code": "8.01",
+          "description": "Other material events"
+        }
+      ],
+      "is_earnings": true,
+      "source": "SEC_EDGAR"
+    },
+    {
+      "ticker": "JPM",
+      "company": "JPMORGAN CHASE & CO",
+      "cik": "0000019617",
+      "form": "8-K",
+      "priority": "high",
+      "filing_date": "2026-04-14",
+      "accession": "0001628280-26-025013",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/0000019617/000162828026025013/jpm-20260414.htm",
+      "flagged_8k_items": [
+        {
+          "code": "7.01",
+          "description": "Regulation FD disclosure"
+        }
+      ],
+      "is_earnings": false,
+      "source": "SEC_EDGAR"
+    },
+    {
+      "ticker": "AMZN",
+      "company": "AMAZON COM INC",
+      "cik": "0001018724",
+      "form": "8-K",
+      "priority": "high",
+      "filing_date": "2026-04-14",
+      "accession": "0001104659-26-042880",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/0001018724/000110465926042880/tm2611746d1_8k.htm",
+      "flagged_8k_items": [
+        {
+          "code": "7.01",
+          "description": "Regulation FD disclosure"
+        }
+      ],
+      "is_earnings": false,
+      "source": "SEC_EDGAR"
+    }
+  ],
+  "news": [
+    {
+      "title": "NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into View",
+      "summary": "NextEra Energy Inc. (NYSE:NEE) is one of the best energy storage stocks to buy according to hedge funds. On March 31, Jefferies analyst Julien Dumoulin-Smith raised his price target on NextEra Energy Inc. (NYSE:NEE) from $87 to $92 while keeping a Hold rating. The analyst cited confidence in NextEra\u2019s long-term earnings growth trajectory and a [\u2026]",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/nextera-nee-jefferies-raises-target-181856526.html?.tsrc=rss",
+      "published": "2026-04-15T18:18:56Z",
+      "feed_name": "Yahoo Finance \u2013 NEE",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "NEE"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Utilities"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigger Finance Push",
+      "summary": "X has launched Smart Cashtags for iPhone users in the United States and Canada, adding live price charts and asset-...",
+      "url": "https://www.cryptoprowl.com/releases/x-rolls-out-smart-cashtags-for-crypto-and-stocks-in-step-toward-a-bigger-finance-push-4177?.tsrc=rss",
+      "published": "2026-04-15T20:03:00Z",
+      "feed_name": "Yahoo Finance \u2013 BTC",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "BTC"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Crypto"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdings",
+      "summary": "Strive said Wednesday it is raising the dividend rate on its Variable Rate Series A Perpetual Preferred Stock to 13...",
+      "url": "https://www.cryptoprowl.com/releases/strive-raises-sata-preferred-yield-to-13-tops-hut-8-in-bitcoin-holdings-4179?.tsrc=rss",
+      "published": "2026-04-15T20:36:00Z",
+      "feed_name": "Yahoo Finance \u2013 BTC",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "LQD",
+        "BTC"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Corporate Bonds",
+        "Crypto"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Anthropic's Mythos Triggers Cybersecurity Race \u2014 CrowdStrike, Rubrik, Cloudflare Stand To Gain",
+      "summary": "Anthropic's unveiling of Project Glasswing and its Claude Mythos frontier model marks a watershed moment for cybersecurity, introducing an AI system capable of discovering and exploiting software vulnerabilities autonomously at unprecedented scale. In its latest newsletter, ARK Invest pointed to Mythos' breakout scores \u2014 93.9% on SWE-bench Verified and 83.1% on CyberGym \u2014 as a signal of a major evolution in both software engineering and cybersecurity defense. The firm also said it views Project",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/anthropics-mythos-triggers-cybersecurity-race-220148067.html?.tsrc=rss",
+      "published": "2026-04-15T22:01:48Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT",
+        "NEE"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Utilities"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Big Bank Earnings Show Consumers Are on Solid Ground\u2014Against All Odds",
+      "summary": "JPMorgan Chase, Citigroup, Bank of America, and Wells Fargo released first-quarter earnings this week.",
+      "url": "https://finance.yahoo.com/m/11e6c656-8d24-3bfc-af3d-f8d7fbc7649e/big-bank-earnings-show.html?.tsrc=rss",
+      "published": "2026-04-15T22:07:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "How The Apple (AAPL) Investment Story Is Shifting On AI, China And Valuation Concerns",
+      "summary": "Apple\u2019s updated fair value estimate edges from US$295.44 to US$296.46 per share, a small shift that still matters if you are watching where analysts think the stock is roughly priced. The move comes as recent research splits into bullish and bearish camps, with one side leaning on ecosystem strength and services stability, and the other focused on costs, China trends, and an already full valuation. Read on to see what is driving each side of the debate and how you can keep track of this...",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-investment-story-shifting-030708387.html?.tsrc=rss",
+      "published": "2026-04-16T03:07:08Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup",
+      "summary": "JPM, WFC and C highlight a strong Q1 as earnings jump and banks post solid growth, despite risks from high energy costs and global uncertainty.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-earnings-trends-highlights-jpmorgan-065800176.html?.tsrc=rss",
+      "published": "2026-04-16T06:58:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP",
+      "summary": "Exxon Mobil stands to gain as high crude prices boost cash flows, with integrated energy giants leveraging diversified operations and strong balance sheets.",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/zacks-analyst-blog-highlights-exxon-075600150.html?.tsrc=rss",
+      "published": "2026-04-16T07:56:00Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "XOM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Energy"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "How J&J plans to hit $100B in revenue this year",
+      "summary": "Johnson & Johnson leaders have laid out a plan to reach record revenue this year while opening the door to more down the road.",
+      "url": "https://www.pharmavoice.com/news/jnj-plans-100b-revenue-this-year/817623/?.tsrc=rss",
+      "published": "2026-04-16T08:00:00Z",
+      "feed_name": "Yahoo Finance \u2013 JNJ",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "JNJ"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Healthcare"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026",
+      "summary": "Dividend investing is a simple way to earn steady income, especially in volatile markets. Many investors prefer stable dividend-paying companies, and Vanguard ETFs offer a low-cost way to get that income with lower risk. Using TipRanks\u2019 Best Vanguard ETFs tool, we identified three income-focused options: Vanguard International High Dividend Yield ETF (VYMI), Vanguard Real Estate ETF (VNQ), and Vanguard Energy ETF (VDE). What makes these ETFs more reliable than some high-yield options is quality",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/3-best-vanguard-dividend-etfs-091650323.html?.tsrc=rss",
+      "published": "2026-04-16T09:16:50Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "XOM",
+        "LQD",
+        "VNQ"
+      ],
+      "matched_sectors": [
+        "Corporate Bonds",
+        "REITs"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?",
+      "summary": "E benefits from oil prices above $90 per barrel, boosting cash flow and supporting growth as elevated prices strengthen its global upstream operations outlook.",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/eni-positioned-gain-ongoing-strength-123300307.html?.tsrc=rss",
+      "published": "2026-04-16T12:33:00Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "XOM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Energy"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "This asset management stock is poised for a turnaround as AI, private credit fears prove 'overblown,' JPMorgan says",
+      "summary": "Hamilton Lane is trading at a discount due to \"overblown\" concerns over AI disruption and private credit risks, presenting a buying opportunity, the bank said.",
+      "url": "https://www.cnbc.com/2026/04/16/this-asset-management-stock-is-poised-for-a-turnaround-jpmorgan-says.html",
+      "published": "2026-04-16T13:17:51Z",
+      "feed_name": "CNBC Markets",
+      "feed_category": "market_news",
+      "matched_tickers": [
+        "MSFT",
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag",
+      "summary": "J&amp;J targets double-digit growth by 2030 despite Stelara hit, banking on Innovative Medicine strength, MedTech gains and new launches.",
+      "url": "https://finance.yahoo.com/sectors/healthcare/articles/j-j-targets-double-digit-134200445.html?.tsrc=rss",
+      "published": "2026-04-16T13:42:00Z",
+      "feed_name": "Yahoo Finance \u2013 JNJ",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "JNJ"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Healthcare"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "ExxonMobil to Release First Quarter 2026 Financial Results",
+      "summary": "SPRING, Texas, April 16, 2026--Exxon Mobil Corporation (NYSE: XOM) will release its first quarter 2026 financial results on Friday, May 1, 2026. The company will issue a press release via Business Wire that will be available at 5:30 a.m. CT at investor.exxonmobil.com.",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/exxonmobil-release-first-quarter-2026-140000085.html?.tsrc=rss",
+      "published": "2026-04-16T14:00:00Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "XOM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Energy"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generative AI Innovation Center",
+      "summary": "Quantiphi, an AI-first digital engineering company, has been named as the First Preferred Amazon Quick Global SI Partner by the AWS Generative AI Innovation Center (GenAI IC) Partner Innovation Alliance (PIA), enabling Quantiphi to modernize data strategies with Agentic AI and transform enterprise productivity for customers worldwide.",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/quantiphi-named-first-preferred-amazon-140100760.html?.tsrc=rss",
+      "published": "2026-04-16T14:01:00Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN",
+        "NEE"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary",
+        "Utilities"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "U.S. Bancorp Q1 Earnings Call Highlights",
+      "summary": "U.S. Bancorp (NYSE:USB) reported first-quarter 2026 earnings per share of $1.18, up about 15% from the prior year, as growth in both net interest income and fee revenue helped deliver another period of positive operating leverage. Management highlighted broad-based revenue gains across the company\u2019s",
+      "url": "https://www.marketbeat.com/instant-alerts/us-bancorp-q1-earnings-call-highlights-2026-04-16/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+      "published": "2026-04-16T14:08:44Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AMZN",
+        "MSFT",
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity",
+      "summary": "LUMN teams up with AWS to launch a cloud connectivity solution that cuts setup from weeks to minutes and embeds networking directly into cloud services.",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/lumen-amazon-services-partner-simplify-142800045.html?.tsrc=rss",
+      "published": "2026-04-16T14:28:00Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "3 Energy Stocks For Steady Passive Income",
+      "summary": "Energy prices surged above $100 per barrel in April 2026, with WTI crude sitting at $100.72, near the 96.7th percentile of its 12-month range. For income investors, that backdrop matters because it directly supports the cash generation that funds dividends at major integrated oil companies and refiners. The 10-year Treasury yields just 4.26% \u2014 a ... 3 Energy Stocks For Steady Passive Income",
+      "url": "https://247wallst.com/investing/2026/04/16/3-energy-stocks-for-steady-passive-income/?.tsrc=rss",
+      "published": "2026-04-16T14:47:11Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "XOM",
+        "TLT",
+        "LQD"
+      ],
+      "matched_sectors": [
+        "Government Bonds",
+        "Corporate Bonds"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Schneider Electric unveils next generation agentic manufacturing capabilities powered by Microsoft Azure AI at Hannover Messe 2026",
+      "summary": "Schneider Electric unveils next generation agentic manufacturing capabilities powered by Microsoft Azure AI at Hannover Messe 2026 Schneider Electric unveils next generation agentic manufacturing capabilities powered by Microsoft Azure AI at Hannover Messe 2026 Long-standing strategic collaboration showcases new milestones that help manufacturers boost efficiency and resiliency across the complete lifecycleIndustrial copilot, powered by Azure AI, cuts engineering time by up to 50% with productio",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/schneider-electric-unveils-next-generation-150000332.html?.tsrc=rss",
+      "published": "2026-04-16T15:00:00Z",
+      "feed_name": "Yahoo Finance \u2013 MSFT",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "NEE"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Utilities"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "CoreWeave Taps US Junk-Debt Market Again With Bond Reopening",
+      "summary": "(Bloomberg) -- CoreWeave Inc. tapped the US junk-bond market for a second time in a week as the cloud infrastructure firm seizes on strong investor demand for AI-related debt. The Livingston, New Jersey-based company sold $1 billion of additional 9.75% senior notes due 2031, according to a person with direct knowledge of the matter. The debt priced at 102 cents on dollar, the person added, asking not to be identified because details are private. The offering was run by JPMorgan Chase & Co., Morg",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/coreweave-taps-us-junk-debt-124425239.html?.tsrc=rss",
+      "published": "2026-04-16T15:42:42Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Oracle\u2019s New AWS Partnership Just Put It Ahead of Azure and Google Cloud",
+      "summary": "Cloud customers today refuse to bet everything on one provider. They run AI models across platforms, keep regulated data in one spot, and tap the best tools wherever they live. Multicloud setups now handle the heavy lifting for enterprise AI, with data flowing freely between environments. That shift explains why infrastructure-as-a-service (IaaS) spending keeps climbing ... Oracle\u2019s New AWS Partnership Just Put It Ahead of Azure and Google Cloud",
+      "url": "https://247wallst.com/investing/2026/04/16/oracles-new-aws-partnership-just-put-it-ahead-of-azure-and-google-cloud/?.tsrc=rss",
+      "published": "2026-04-16T15:51:58Z",
+      "feed_name": "Yahoo Finance \u2013 MSFT",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Why I Can\u2019t Stop Buying Amazon Stock",
+      "summary": "Amazon (NASDAQ:AMZN) has delivered accelerating numbers, a widening moat, and a valuation that makes sense for what this company is becoming. I can\u2019t stop buying AMZN stock, here\u2019s why. Reason 1: AWS Is Reaccelerating Into AI Demand The most important number in Amazon\u2019s business is the trajectory of AWS growth. In Q1 2025, AWS grew ... Why I Can\u2019t Stop Buying Amazon Stock",
+      "url": "https://247wallst.com/investing/2026/04/16/why-i-cant-stop-buying-amazon-stock/?.tsrc=rss",
+      "published": "2026-04-16T15:55:50Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Mortgage rates dip to 4-week low \u2014 just in time for the best week of the year to sell a home",
+      "summary": "Mortgage rates fell for the second straight week, setting the spring home-buying season up for a reboot after inflation worries linked to the Iran war sent rates climbing last month.",
+      "url": "https://www.marketwatch.com/story/mortgage-rates-dip-to-4-week-low-just-in-time-for-the-best-week-of-the-year-to-sell-a-home-c921a9b1?mod=mw_rss_topstories",
+      "published": "2026-04-16T16:14:00Z",
+      "feed_name": "MarketWatch Top Stories",
+      "feed_category": "market_news",
+      "matched_tickers": [
+        "MSFT",
+        "VNQ"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "REITs"
+      ],
+      "matched_keywords": [
+        "inflation"
+      ],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Might Surprise You",
+      "summary": "Coca-Cola (NYSE:KO) closed 2025 with steady organic growth and a 63rd consecutive dividend increase, while Johnson & Johnson (NYSE:JNJ) opened 2026 with accelerating pharmaceutical momentum and its own 64-year dividend streak intact. Both are Dividend Kings built for uncertainty. But the businesses behind those credentials differ fundamentally, and that difference matters more than yield alone. ... Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Might Surprise You",
+      "url": "https://247wallst.com/investing/2026/04/16/coca-cola-vs-johnson-johnson-the-safest-dividend-on-wall-street-might-surprise-you/?.tsrc=rss",
+      "published": "2026-04-16T16:26:09Z",
+      "feed_name": "Yahoo Finance \u2013 JNJ",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT",
+        "JNJ",
+        "LQD"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Healthcare",
+        "Corporate Bonds"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellite Internet Race With Elon Musk-Led SpaceX Intensifies: 'We're Very Open-Minded\u2026'",
+      "summary": "The Federal Communications Commission (FCC) Chair Brendan Carr approved Amazon.com Inc.\u2018s acquisition of Globalstar Inc. on Tuesday, signalling the importance of competition in the space-based internet sector. \u2018We\u2019re Very Open-Minded,\u2019 Says FCC Chair In an interview with CNBC, Carr shared that the FCC wanted to foster growth in the sector. \u201cWe\u2019re very open-minded to it,\u201d Carr said, adding that the FCC would be reviewing the paperwork involved in the deal. Carr said that the deal was consistent w",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/fcc-chair-brendan-carr-gives-163109389.html?.tsrc=rss",
+      "published": "2026-04-16T16:31:09Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary"
+      ],
+      "matched_keywords": [
+        "acquisition"
+      ],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it",
+      "summary": "We recently published Jim Cramer Said Allbirds Management Are \u201cJokers\u201d & Discussed These 18 Stocks. Apple Inc. (NASDAQ:AAPL) is one of the stocks discussed by Jim Cramer. Tech giant Apple Inc. (NASDAQ:AAPL)\u2019s shares are up by 30% over the past year and are down by 2.9% year-to-date. Cramer has discussed the firm several times over [\u2026]",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-reveals-why-apple-164852797.html?.tsrc=rss",
+      "published": "2026-04-16T16:48:52Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Jim Cramer Reveals What Amazon\u2019s (AMZN) Closely Held Secret Is",
+      "summary": "We recently published Jim Cramer Said Allbirds Management Are \u201cJokers\u201d & Discussed These 18 Stocks. Amazon.com, Inc. (NASDAQ:AMZN) is one of the stocks discussed by Jim Cramer. eCommerce and cloud services provider Amazon.com, Inc. (NASDAQ:AMZN)\u2019s shares are up by 9.5% year-to-date. Evercore ISI discussed the firm on April 9th as it reiterated a $285 share [\u2026]",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-reveals-amazon-amzn-164908350.html?.tsrc=rss",
+      "published": "2026-04-16T16:49:08Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN",
+        "VNQ"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary",
+        "REITs"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Oracle Stock Jumps on Amazon AWS Cloud Deal",
+      "summary": "Oracle and Amazon Forge Deeper Cloud Ties: Stock Jumps as AI Integration Looms",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/oracle-stock-jumps-amazon-aws-171525988.html?.tsrc=rss",
+      "published": "2026-04-16T17:15:25Z",
+      "feed_name": "Yahoo Finance \u2013 AMZN",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "MSFT",
+        "AMZN"
+      ],
+      "matched_sectors": [
+        "Technology",
+        "Consumer Discretionary"
+      ],
+      "matched_keywords": [],
+      "importance": "critical",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Airline stocks rebounded as oil pulled back. Why the rally may not last",
+      "summary": "While the ceasefire is welcome news for major U.S. carriers, expect the airlines to stay vulnerable to headline risk and listen to their earnings commentary.",
+      "url": "https://www.cnbc.com/2026/04/15/airlines-rebounded-as-crude-oil-pulled-back-the-rally-may-not-last.html",
+      "published": "2026-04-15T17:40:35Z",
+      "feed_name": "CNBC Markets",
+      "feed_category": "market_news",
+      "matched_tickers": [
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns the Ground Beneath It",
+      "summary": "Since Iran closed the Strait of Hormuz on February 28, 2026, the global oil market has been volatile. U.S. and Israeli strikes on Iranian energy infrastructure sent crude prices surging through March. A ceasefire briefly knocked Brent below $100, then Pakistan-brokered talks collapsed after 21 hours of negotiations. President Trump announced a naval blockade of ... Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns the Ground Beneath It",
+      "url": "https://247wallst.com/investing/2026/04/15/forget-exxon-the-smartest-oil-trade-in-2026-is-the-company-that-owns-the-ground-beneath-it/?.tsrc=rss",
+      "published": "2026-04-15T17:47:27Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "XOM",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "TeraWulf To Raise $900 Million For A.I. Data Centre Expansion",
+      "summary": "TeraWulf (NASDAQ: $WULF) has announced plans to raise $900 million U.S. to fund its artificial intelligence (A.I.) ...",
+      "url": "https://www.cryptoprowl.com/releases/terawulf-to-raise-900-million-for-ai-data-centre-expansion-4174?.tsrc=rss",
+      "published": "2026-04-15T17:51:00Z",
+      "feed_name": "Yahoo Finance \u2013 BTC",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "BTC",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Chevron, Shell ink more surprising Venezuela deals",
+      "summary": "Quietly, Venezuela is starting to become investable again. Despite insiders like ExxonMobil CEO Darren Woods initial hesitation (he previously called it uninvestable), big oil is kicking tires and evaluating opportunities in Venezuela, including Chevron. The Latin American nation has reacted to the ...",
+      "url": "https://www.thestreet.com/investing/stocks/chevron-shell-ink-more-surprising-venezuela-deals?.tsrc=rss",
+      "published": "2026-04-15T18:03:00Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "XOM",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Two Wall Street analysts are getting bullish on a Target turnaround. Here's why",
+      "summary": "Target shares are soaring in 2026, and that trend could get a boost as the retailer revamps its stores, analysts said.",
+      "url": "https://www.cnbc.com/2026/04/15/two-wall-street-analysts-are-getting-bullish-on-on-a-target-turnaround-heres-why.html",
+      "published": "2026-04-15T18:04:17Z",
+      "feed_name": "CNBC Markets",
+      "feed_category": "market_news",
+      "matched_tickers": [
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Bitdeer Technologies\u2019 Self-Mined Bitcoin Increased 480% In March",
+      "summary": "Bitdeer Technologies (NASDAQ: $BTDR) produced 661 self-mined Bitcoin (CRYPTO: $BTC) in March, up 480% from the same...",
+      "url": "https://www.cryptoprowl.com/releases/bitdeer-technologies-self-mined-bitcoin-increased-480-in-march-4176?.tsrc=rss",
+      "published": "2026-04-15T18:15:00Z",
+      "feed_name": "Yahoo Finance \u2013 BTC",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "BTC"
+      ],
+      "matched_sectors": [
+        "Crypto"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Jamie Dimon Says JPMorgan Stock Isn\u2019t Cheap. Why the Bank Is Still Buying Back Billions.",
+      "summary": "CEO Jamie Dimon says  JPMorgan  Chase\u2019s stock isn\u2019t cheap, but that hasn\u2019t stopped the company from buying back $32 billion of stock over the past four quarters.  The bank has one of the larger share repurchase programs in the country, and uses more than half its annual earnings for stock buybacks.  There\u2019s reason for JPMorgan to rein in its buybacks while the stock trades at lofty multiples\u2014for the benefit of the bank itself and its shareholders.",
+      "url": "https://finance.yahoo.com/m/b06a6a3d-1649-3dd5-83d6-0652b411816b/jamie-dimon-says-jpmorgan.html?.tsrc=rss",
+      "published": "2026-04-15T19:46:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "SpaceX Plans Site Visits for Large Investors as Mega-IPO Nears",
+      "summary": "(Bloomberg) -- SpaceX is gearing up to take potential anchor investors in its IPO on a tour of its marquee sites across America, people familiar with the plans said, as billionaire Elon Musk\u2019s company targets the biggest ever market debut.The rocket, satellite and artificial intelligence company is looking to showcase facilities in California and Texas over a few days in visits for investors who could take large stakes in the offering, such as sovereign wealth funds, according to the people.Spac",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/spacex-plans-visits-large-investors-200506448.html?.tsrc=rss",
+      "published": "2026-04-15T20:05:06Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "JPMorganChase Declares Preferred Stock Dividends",
+      "summary": "NEW YORK, April 15, 2026--JPMorgan Chase & Co. (NYSE: JPM) (\"JPMorganChase\" or the \"Firm\") has declared dividends on the outstanding shares of the Firm\u2019s Series DD, EE, GG, JJ, KK, LL, MM and NN preferred stock. Information can be found on the Firm\u2019s Investor Relations website at https://www.jpmorganchase.com/ir/news.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorganchase-declares-preferred-stock-dividends-203100892.html?.tsrc=rss",
+      "published": "2026-04-15T20:31:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "JPMorganChase 2026 Annual Meeting of Shareholders",
+      "summary": "NEW YORK, April 15, 2026--As previously announced, the JPMorgan Chase & Co. (NYSE: JPM) (\"JPMorganChase\" or the \"Firm\") annual meeting of shareholders will be held on Tuesday, May 19, 2026 at 10:00 a.m. (Eastern). The meeting will be held virtually.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/jpmorganchase-2026-annual-meeting-shareholders-203200391.html?.tsrc=rss",
+      "published": "2026-04-15T20:32:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Financial Services Roundup: Market Talk",
+      "summary": "Find insight on JPMorgan, Wells Fargo, the rally in European asset managers and more in the latest Market Talks covering Financial Services.",
+      "url": "https://finance.yahoo.com/m/e5e39bc3-5f36-3583-bf60-86d90b988df5/financial-services-roundup%3A.html?.tsrc=rss",
+      "published": "2026-04-15T21:03:00Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Sarat Sethi is watching this 'Magnificent Seven' stock",
+      "summary": "Amazon shows signs of growth as it continues to expand its businesses, Sarat Sethi said on CNBC's \"The Exchange.\"",
+      "url": "https://www.cnbc.com/2026/04/15/sarat-sethi-is-watching-this-magnificent-seven-stock.html",
+      "published": "2026-04-15T21:11:39Z",
+      "feed_name": "CNBC Markets",
+      "feed_category": "market_news",
+      "matched_tickers": [
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "I've Owned Apple Stock for Years. Here's Why I'm Letting Its AI Story Play Out.",
+      "summary": "Apple could be playing a different game than its peers.",
+      "url": "https://www.fool.com/investing/2026/04/15/ive-owned-apple-stock-for-years-ai-play-out/?.tsrc=rss",
+      "published": "2026-04-15T21:50:00Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Former Apple Exec Leaves Ford in Tech Reorganization",
+      "summary": "Doug Field, Ford\u2019s chief EV, digital, and design officer, is departing after nearly five years with the company.",
+      "url": "https://finance.yahoo.com/m/f2e8807b-a006-3ee0-a995-928b598912c0/former-apple-exec-leaves-ford.html?.tsrc=rss",
+      "published": "2026-04-15T21:56:00Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Jamie Dimon Sells $40 Million of JPMorgan Stock",
+      "summary": "JPMorgan Chief Executive Jamie Dimon sold more than $40 million of the bank\u2019s stock on Wednesday in the latest cash out of his shares.  Dimon has run the bank for over two decades and didn\u2019t start selling any of his bank stocks until the end of 2023 when he sold a million shares worth around $180 million.  Dimon, his wife and his family trusts hold the shares.",
+      "url": "https://finance.yahoo.com/m/c758c687-76b4-3acf-9409-b778e05a44dc/jamie-dimon-sells-%2440-million.html?.tsrc=rss",
+      "published": "2026-04-15T23:08:05Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM"
+      ],
+      "matched_sectors": [
+        "Financials"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Hedge Funds Pivot to Bearish Dollar Bets on US-Iran Talks Optimism",
+      "summary": "(Bloomberg) -- Hedge funds are increasingly downbeat on the dollar as the prospect of a two-week ceasefire extension between the US and Iran sap the currency\u2019s war-driven strength. Investors added to their bearish dollar trades this month through April 10, based on a proprietary trading model from Morgan Stanley.In the options market, so-called risk reversals on the Bloomberg dollar index show the premium to hedge against a stronger dollar compared with bets against a weaker greenback has narrow",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/hedge-funds-pivot-bearish-dollar-100523888.html?.tsrc=rss",
+      "published": "2026-04-16T01:00:44Z",
+      "feed_name": "Yahoo Finance \u2013 JPM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "JPM",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Nike (NKE) Stock Is Up, What You Need To Know",
+      "summary": "Shares of athletic apparel brand Nike (NYSE:NKE) jumped 3.8% in the afternoon session after news broke that top company leaders are spending millions to buy more shares.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nike-nke-stock-know-023427387.html?.tsrc=rss",
+      "published": "2026-04-16T02:34:27Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "NEE"
+      ],
+      "matched_sectors": [
+        "Utilities"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Apple (AAPL) Stock Trades Up, Here Is Why",
+      "summary": "Shares of iPhone and iPad maker Apple (NASDAQ:AAPL) jumped 2.6% in the afternoon session after news broke about a major new partnership to upgrade the iPhone\u2019s satellite features.",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-stock-trades-why-031427316.html?.tsrc=rss",
+      "published": "2026-04-16T03:14:27Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "AI demand drives chipmaker TSMC's net profit to fresh record",
+      "summary": "Taiwanese chip maker TSMC said Thursday its net profit surged to a fresh record in the first quarter, fuelled by the global artificial intelligence race despite the war in the Middle East.Helium gas is a key material in the chip supply chain, and Qatar -- one of the countries affected by the war in the Middle East -- is one of its few large-scale producers.\njoy-kaf/dan",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/ai-demand-drives-chipmaker-tsmcs-063638491.html?.tsrc=rss",
+      "published": "2026-04-16T07:28:22Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [
+        "supply chain"
+      ],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Wood Mackenzie: Six-country international shale priority list for energy security as Middle East conflict drives supply diversification",
+      "summary": "LONDON/HOUSTON/SINGAPORE, April 16, 2026 (GLOBE NEWSWIRE) -- INSIGHT FOR IMMEDIATE RELEASE Wood Mackenzie | www.woodmac.com Middle East conflict has elevated strategic energy security priorities as countries seek supply diversification, international shale exploration can play a key role in meeting those goals, according to new research from Wood Mackenzie, titled \u201cA hydrocarbon copy: the upstream industry\u2019s return to international shale exploration\u201d. Six countries are advancing unconventional r",
+      "url": "https://finance.yahoo.com/sectors/energy/articles/wood-mackenzie-six-country-international-083000410.html?.tsrc=rss",
+      "published": "2026-04-16T08:30:00Z",
+      "feed_name": "Yahoo Finance \u2013 XOM",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "XOM",
+        "AAPL"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Global Wearable Electronics Market Report 2026-2036, Profiles of 700+ Companies, Concentrated at the Top and Richly Diverse in Specialist Niches with Apple, Samsung, Xiaomi, Huawei, and Meta Leading",
+      "summary": "The global wearable electronics market is at a transformative phase, expanding beyond fitness trackers and smartwatches into realms like extended reality, clinical-grade health monitoring, and AI-powered computing. Key growth drivers include democratized health intelligence with advanced sensors, the rise of AR/VR wearables, and embedded AI as infrastructure. Major players like Apple and Samsung dominate, while niche companies explore specialized innovations. Future market opportunities lie in a",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/global-wearable-electronics-market-report-083900006.html?.tsrc=rss",
+      "published": "2026-04-16T08:39:00Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    },
+    {
+      "title": "Taiwan's chipmaker TSMC reports 58% jump in profit, warns about Iran war impacts",
+      "summary": "Taiwan\u2019s chipmaker TSMC, one of the world\u2019s largest companies, reported a 58% jump in profit on Thursday for the January-March quarter, thanks to strong demand driven by the artificial intelligence boom even as the Iran war was driving up costs.  Taiwan Semiconductor Manufacturing Corp., a key supplier for Apple and Nvidia and the largest contract chipmaker in the world, reported a record net quarterly profit of 572.5 billion new Taiwan dollars ($18.1 billion) for the first three months of the y",
+      "url": "https://finance.yahoo.com/sectors/technology/articles/taiwans-chipmaker-tsmc-reports-58-100501312.html?.tsrc=rss",
+      "published": "2026-04-16T10:05:01Z",
+      "feed_name": "Yahoo Finance \u2013 AAPL",
+      "feed_category": "company_news",
+      "matched_tickers": [
+        "AAPL",
+        "MSFT"
+      ],
+      "matched_sectors": [
+        "Technology"
+      ],
+      "matched_keywords": [],
+      "importance": "high",
+      "needs_claude_analysis": true,
+      "source": "RSS"
+    }
+  ],
+  "signals": [
+    {
+      "event_type": "news",
+      "summary": "Jefferies raised NEE price target from $87 to $92 citing data center demand and long-term earnings growth confidence, though maintaining Hold rating. Positive catalyst for NextEra's growth trajectory in energy infrastructure.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "NEE",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Price target upgrade and data center tailwinds support near-term valuation expansion despite Hold rating indicating limited immediate upside."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Data center power demand growth benefits hyperscale infrastructure operators like Microsoft, reinforcing AI/cloud infrastructure thesis."
+        }
+      ],
+      "macro_themes": [
+        "data_center_energy_demand",
+        "renewable_energy_infrastructure",
+        "AI_infrastructure_buildout"
+      ],
+      "action_flags": [
+        "HOLD NEE",
+        "MONITOR NEE"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into View",
+        "date": "2026-04-15T18:18:56Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/nextera-nee-jefferies-raises-target-181856526.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "X (formerly Twitter) launched Smart Cashtags enabling live price charts for crypto and stocks on iPhone, signaling its expansion into financial services and potentially increasing retail engagement with digital assets.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "BTC",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Enhanced accessibility and visibility on a major social platform could drive retail adoption and trading volume for Bitcoin."
+        },
+        {
+          "ticker": "AAPL",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Feature launch on iPhone ecosystem strengthens X's iOS integration, potentially increasing user engagement and app retention on Apple devices."
+        }
+      ],
+      "macro_themes": [
+        "Crypto mainstreaming and institutional adoption",
+        "Social media platform convergence with fintech",
+        "Retail investor accessibility expansion"
+      ],
+      "action_flags": [
+        "HOLD BTC",
+        "MONITOR BTC"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigger Finance Push",
+        "date": "2026-04-15T20:03:00Z",
+        "url": "https://www.cryptoprowl.com/releases/x-rolls-out-smart-cashtags-for-crypto-and-stocks-in-step-toward-a-bigger-finance-push-4177?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Strive increases preferred stock dividend to 13% and surpasses Hut 8 in Bitcoin holdings, signaling institutional confidence in Bitcoin assets and competitive yield positioning in crypto-adjacent equities.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "BTC",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Increased institutional accumulation by Strive demonstrates growing corporate treasury adoption and validates Bitcoin as a strategic reserve asset."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "13% preferred yield represents competition for investment-grade corporate bond allocations but limited direct impact on existing LQD holdings."
+        }
+      ],
+      "macro_themes": [
+        "institutional_bitcoin_adoption",
+        "alternative_yield_competition",
+        "crypto_legitimization"
+      ],
+      "action_flags": [
+        "HOLD BTC",
+        "MONITOR LQD"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdings",
+        "date": "2026-04-15T20:36:00Z",
+        "url": "https://www.cryptoprowl.com/releases/strive-raises-sata-preferred-yield-to-13-tops-hut-8-in-bitcoin-holdings-4179?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Anthropic's Claude Mythos AI demonstrates breakthrough capabilities in autonomous vulnerability discovery and exploitation, triggering a cybersecurity arms race that benefits specialized security firms while creating software supply chain risks for major tech companies.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AAPL",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Increased software vulnerability exposure and potential security audit costs for massive iOS/macOS ecosystem, though strong security culture provides defensive moat."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Dual exposure as both potential vulnerability target and AI infrastructure beneficiary through Azure/GitHub, with extensive enterprise security investments offsetting risk."
+        }
+      ],
+      "macro_themes": [
+        "AI-driven cybersecurity escalation",
+        "Software supply chain risk repricing",
+        "Defensive technology sector rotation"
+      ],
+      "action_flags": [
+        "MONITOR AAPL",
+        "MONITOR MSFT",
+        "HOLD portfolio"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Anthropic's Mythos Triggers Cybersecurity Race \u2014 CrowdStrike, Rubrik, Cloudflare Stand To Gain",
+        "date": "2026-04-15T22:01:48Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/anthropics-mythos-triggers-cybersecurity-race-220148067.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Major U.S. banks reported strong Q1 2026 earnings, indicating resilient consumer health despite prior recession fears. This supports economic stability and suggests sustained loan demand and credit quality.",
+      "market_sentiment": "bullish",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "JPM",
+          "direction": "bullish",
+          "magnitude": "high",
+          "rationale": "Direct beneficiary as strong consumer health supports loan growth, net interest income, and lower credit losses."
+        },
+        {
+          "ticker": "XOM",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Healthy consumer spending supports energy demand and stabilizes oil prices in a growing economy."
+        },
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Solid consumer financial health directly translates to stronger retail spending and AWS enterprise demand."
+        },
+        {
+          "ticker": "TLT",
+          "direction": "bearish",
+          "magnitude": "medium",
+          "rationale": "Strong consumer data reduces recession risk and may delay or limit Fed rate cuts, pressuring long-duration bonds."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Higher-for-longer rate expectations from economic strength create modest headwinds for investment-grade corporates."
+        },
+        {
+          "ticker": "VNQ",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Delayed rate cuts due to economic resilience extend financing cost pressure on REITs."
+        }
+      ],
+      "macro_themes": [
+        "consumer_resilience",
+        "economic_soft_landing",
+        "banking_sector_strength",
+        "rates_higher_for_longer"
+      ],
+      "action_flags": [
+        "HOLD JPM",
+        "MONITOR TLT",
+        "REDUCE VNQ"
+      ],
+      "urgency": "this_week",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Big Bank Earnings Show Consumers Are on Solid Ground\u2014Against All Odds",
+        "date": "2026-04-15T22:07:00Z",
+        "url": "https://finance.yahoo.com/m/11e6c656-8d24-3bfc-af3d-f8d7fbc7649e/big-bank-earnings-show.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Apple's fair value estimate ticked up marginally to $296.46, but analyst views are split between ecosystem optimism and concerns over China exposure, rising costs, and stretched valuation.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AAPL",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Minimal fair value change and divided analyst opinions suggest no clear directional catalyst despite ongoing China and valuation debate."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Matched by keyword association but not directly impacted; potential relative beneficiary if AAPL faces headwinds, though no actionable signal here."
+        }
+      ],
+      "macro_themes": [
+        "Tech valuation uncertainty",
+        "China geopolitical risk",
+        "AI monetization timeline"
+      ],
+      "action_flags": [
+        "MONITOR AAPL",
+        "HOLD MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "How The Apple (AAPL) Investment Story Is Shifting On AI, China And Valuation Concerns",
+        "date": "2026-04-16T03:07:08Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-investment-story-shifting-030708387.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Major U.S. banks including JPMorgan posted strong Q1 2026 earnings with solid growth, signaling robust financial sector performance despite macro headwinds from elevated energy costs and geopolitical uncertainty.",
+      "market_sentiment": "bullish",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "JPM",
+          "direction": "bullish",
+          "magnitude": "high",
+          "rationale": "Direct positive earnings report with strong Q1 growth and solid fundamentals despite macro risks."
+        },
+        {
+          "ticker": "TLT",
+          "direction": "bearish",
+          "magnitude": "medium",
+          "rationale": "Strong bank earnings and economic resilience reduce probability of near-term rate cuts, pressuring long-duration Treasuries."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Investment-grade credit spreads may tighten on financial sector strength, but duration risk remains from sticky rates."
+        },
+        {
+          "ticker": "XOM",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Mention of high energy costs is contextual risk factor but not material negative given XOM's defensive positioning and pricing power."
+        }
+      ],
+      "macro_themes": [
+        "financial_sector_strength",
+        "earnings_growth",
+        "rates_higher_longer",
+        "economic_resilience"
+      ],
+      "action_flags": [
+        "HOLD JPM",
+        "MONITOR TLT",
+        "MONITOR LQD"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup",
+        "date": "2026-04-16T06:58:00Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/zacks-earnings-trends-highlights-jpmorgan-065800176.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Positive analyst coverage highlights Exxon Mobil's strong positioning amid high crude prices, emphasizing cash flow strength and diversified integrated operations.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "High crude prices directly boost cash flows and profitability for Exxon's integrated operations and strong balance sheet."
+        }
+      ],
+      "macro_themes": [
+        "energy_sector_strength",
+        "commodity_price_support"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR crude oil price trends"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP",
+        "date": "2026-04-16T07:56:00Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/zacks-analyst-blog-highlights-exxon-075600150.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Johnson & Johnson announces strategic plan to achieve $100B revenue milestone in 2026, signaling strong operational execution and growth trajectory in healthcare sector.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "JNJ",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Revenue growth target indicates strong product pipeline and market expansion, supporting dividend sustainability and defensive portfolio stability."
+        }
+      ],
+      "macro_themes": [
+        "healthcare sector strength",
+        "defensive positioning in uncertain macro environment"
+      ],
+      "action_flags": [
+        "HOLD JNJ",
+        "MONITOR JNJ"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "How J&J plans to hit $100B in revenue this year",
+        "date": "2026-04-16T08:00:00Z",
+        "url": "https://www.pharmavoice.com/news/jnj-plans-100b-revenue-this-year/817623/?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Yahoo Finance highlights three Vanguard dividend ETFs for reliable passive income in 2026, including VNQ (Real Estate) and VDE (Energy), signaling market preference for stable dividend-paying sectors amid volatility.",
+      "market_sentiment": "neutral",
+      "confidence": "low",
+      "affected_positions": [
+        {
+          "ticker": "VNQ",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Positive mention as reliable dividend ETF may marginally support sentiment, but no fundamental catalyst or specific company news provided."
+        },
+        {
+          "ticker": "XOM",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Indirect positive association through VDE (Vanguard Energy ETF) inclusion, but article focuses on ETF selection rather than energy sector fundamentals."
+        }
+      ],
+      "macro_themes": [
+        "dividend_income_focus",
+        "volatility_hedging"
+      ],
+      "action_flags": [
+        "HOLD VNQ",
+        "HOLD XOM"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026",
+        "date": "2026-04-16T09:16:50Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/3-best-vanguard-dividend-etfs-091650323.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Oil prices sustained above $90/barrel are benefiting energy majors like Eni, signaling a favorable pricing environment for upstream producers including XOM.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Elevated crude prices above $90/barrel directly enhance XOM's upstream cash flow generation and support expansion of global operations."
+        }
+      ],
+      "macro_themes": [
+        "elevated_crude_prices",
+        "energy_sector_strength"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR XOM"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?",
+        "date": "2026-04-16T12:33:00Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/eni-positioned-gain-ongoing-strength-123300307.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "JPMorgan analyst upgrades Hamilton Lane (asset manager), citing overblown fears about AI disruption and private credit risks. This signals broader market confidence in traditional asset management and private credit markets.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "JPM",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "JPMorgan's positive stance on private credit and asset management supports its own investment banking and lending activities in these segments."
+        }
+      ],
+      "macro_themes": [
+        "private_credit_resilience",
+        "AI_disruption_concerns_easing",
+        "asset_management_sector_stabilization"
+      ],
+      "action_flags": [
+        "HOLD JPM"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "This asset management stock is poised for a turnaround as AI, private credit fears prove 'overblown,' JPMorgan says",
+        "date": "2026-04-16T13:17:51Z",
+        "url": "https://www.cnbc.com/2026/04/16/this-asset-management-stock-is-poised-for-a-turnaround-jpmorgan-says.html"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Johnson & Johnson announces ambitious double-digit growth target through 2030, offsetting anticipated Stelara patent cliff with strength in Innovative Medicine pipeline, MedTech expansion, and new product launches.",
+      "market_sentiment": "bullish",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "JNJ",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Long-term growth guidance demonstrates pipeline confidence and diversification beyond Stelara, supporting defensive healthcare allocation with upside potential."
+        }
+      ],
+      "macro_themes": [
+        "healthcare_innovation",
+        "pharmaceutical_pipeline_strength",
+        "defensive_sector_growth"
+      ],
+      "action_flags": [
+        "HOLD JNJ",
+        "MONITOR JNJ"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag",
+        "date": "2026-04-16T13:42:00Z",
+        "url": "https://finance.yahoo.com/sectors/healthcare/articles/j-j-targets-double-digit-134200445.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "filing",
+      "summary": "ExxonMobil announces the scheduled release date (May 1, 2026) for its Q1 2026 earnings. This is a routine corporate calendar announcement with no new fundamental information.",
+      "market_sentiment": "neutral",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Scheduled earnings announcement provides no actionable data; awaiting actual results on May 1st for revenue, production volumes, and guidance."
+        }
+      ],
+      "macro_themes": [
+        "energy_sector_earnings_calendar"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR XOM"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "ExxonMobil to Release First Quarter 2026 Financial Results",
+        "date": "2026-04-16T14:00:00Z",
+        "url": "https://finance.yahoo.com/sectors/energy/articles/exxonmobil-release-first-quarter-2026-140000085.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Quantiphi named first preferred Amazon Quick SI Partner by AWS GenAI Innovation Center, strengthening Amazon's enterprise AI ecosystem and competitive positioning against Microsoft in the generative AI services market.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Partnership designation reinforces AWS's generative AI ecosystem strength and enterprise penetration, though impact is incremental given AWS's scale."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "News reflects competitive intensity in enterprise AI but does not materially alter Microsoft's Azure OpenAI leadership or market position."
+        }
+      ],
+      "macro_themes": [
+        "Enterprise AI adoption acceleration",
+        "Cloud hyperscaler competitive dynamics"
+      ],
+      "action_flags": [
+        "HOLD AMZN",
+        "HOLD MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generative AI Innovation Center",
+        "date": "2026-04-16T14:01:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/quantiphi-named-first-preferred-amazon-140100760.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "U.S. Bancorp reported strong Q1 2026 earnings with 15% EPS growth driven by net interest income and fee revenue expansion, signaling healthy banking sector fundamentals and operational leverage in a higher-rate environment.",
+      "market_sentiment": "bullish",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "JPM",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Strong regional bank earnings validate NII expansion thesis for money-center banks like JPMorgan in elevated rate environment."
+        }
+      ],
+      "macro_themes": [
+        "banking_sector_strength",
+        "net_interest_margin_expansion",
+        "positive_operating_leverage"
+      ],
+      "action_flags": [
+        "HOLD JPM",
+        "MONITOR JPM"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "U.S. Bancorp Q1 Earnings Call Highlights",
+        "date": "2026-04-16T14:08:44Z",
+        "url": "https://www.marketbeat.com/instant-alerts/us-bancorp-q1-earnings-call-highlights-2026-04-16/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Lumen partners with AWS to accelerate cloud connectivity setup from weeks to minutes, enhancing AWS's competitive positioning in enterprise cloud infrastructure.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Partnership strengthens AWS's enterprise cloud offering by reducing friction in network provisioning, potentially accelerating customer adoption and revenue growth in its highest-margin segment."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "Competitive pressure as AWS gains infrastructure advantage, but Microsoft Azure maintains differentiated enterprise relationships and hybrid cloud positioning."
+        }
+      ],
+      "macro_themes": [
+        "cloud infrastructure competition",
+        "enterprise digital transformation"
+      ],
+      "action_flags": [
+        "HOLD AMZN",
+        "MONITOR MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity",
+        "date": "2026-04-16T14:28:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/lumen-amazon-services-partner-simplify-142800045.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Oil prices surged above $100/barrel (WTI $100.72), supporting energy dividend stocks while 10-year Treasury yields remain at 4.26%, creating relative yield dynamics between energy equities and fixed income.",
+      "market_sentiment": "mixed",
+      "confidence": "high",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Elevated crude prices near $101 directly boost cash flow and dividend sustainability for integrated oil majors, while low beta (0.87) and rate-insensitivity provide defensive qualities."
+        },
+        {
+          "ticker": "TLT",
+          "direction": "bearish",
+          "magnitude": "medium",
+          "rationale": "Energy price surge reinforces inflationary pressures that could push yields higher from current 4.26%, creating duration risk for 20+ year bonds with very high negative beta."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Investment-grade corporate bonds face modest pressure from potential rate increases if energy-driven inflation persists, though shorter duration than TLT limits downside."
+        },
+        {
+          "ticker": "GLD",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Oil above $100 signals inflation risks that support gold's safe-haven and inflation-hedge characteristics, particularly with real yields compressed."
+        }
+      ],
+      "macro_themes": [
+        "energy_price_spike",
+        "inflation_pressure",
+        "yield_curve_dynamics",
+        "income_rotation"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR TLT",
+        "REDUCE TLT",
+        "MONITOR LQD"
+      ],
+      "urgency": "this_week",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "3 Energy Stocks For Steady Passive Income",
+        "date": "2026-04-16T14:47:11Z",
+        "url": "https://247wallst.com/investing/2026/04/16/3-energy-stocks-for-steady-passive-income/?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Schneider Electric announces advanced AI-powered manufacturing platform built on Microsoft Azure AI, demonstrating a major enterprise use case that reportedly cuts engineering time by up to 50%.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "MSFT",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Azure AI platform validation through high-profile industrial partnership strengthens enterprise cloud revenue trajectory and demonstrates AI monetization."
+        }
+      ],
+      "macro_themes": [
+        "AI commercialization",
+        "enterprise cloud adoption",
+        "industrial automation"
+      ],
+      "action_flags": [
+        "HOLD MSFT",
+        "MONITOR MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Schneider Electric unveils next generation agentic manufacturing capabilities powered by Microsoft Azure AI at Hannover Messe 2026",
+        "date": "2026-04-16T15:00:00Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/schneider-electric-unveils-next-generation-150000332.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "CoreWeave issued $1B in junk bonds at 9.75% yield, led by JPMorgan. Strong demand for AI-related high-yield debt signals robust credit markets and fee revenue for investment banks.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "JPM",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "JPMorgan earns underwriting fees from leading CoreWeave's $1B bond offering, demonstrating strong investment banking franchise."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "neutral",
+          "magnitude": "low",
+          "rationale": "High-yield issuance at 9.75% reflects healthy credit appetite but LQD holds investment-grade bonds, not junk debt."
+        }
+      ],
+      "macro_themes": [
+        "AI infrastructure investment demand",
+        "Healthy high-yield credit markets",
+        "Investment banking fee strength"
+      ],
+      "action_flags": [
+        "HOLD JPM",
+        "MONITOR LQD"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "CoreWeave Taps US Junk-Debt Market Again With Bond Reopening",
+        "date": "2026-04-16T15:42:42Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/coreweave-taps-us-junk-debt-124425239.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Oracle's new AWS partnership positions it ahead of Azure and Google Cloud in multicloud IaaS deployments, potentially eroding Microsoft's competitive moat while benefiting Amazon's cloud ecosystem.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "MSFT",
+          "direction": "bearish",
+          "magnitude": "medium",
+          "rationale": "Azure losing competitive ground to Oracle-AWS alliance in enterprise multicloud AI infrastructure directly threatens Microsoft's cloud growth trajectory and pricing power."
+        },
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "AWS partnership with Oracle expands reach into enterprise accounts previously locked into Azure/Oracle single-vendor relationships, strengthening AWS market position in IaaS."
+        }
+      ],
+      "macro_themes": [
+        "cloud_computing_competitive_dynamics",
+        "enterprise_AI_infrastructure_shift",
+        "multicloud_adoption_acceleration"
+      ],
+      "action_flags": [
+        "MONITOR MSFT",
+        "HOLD AMZN"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Oracle\u2019s New AWS Partnership Just Put It Ahead of Azure and Google Cloud",
+        "date": "2026-04-16T15:51:58Z",
+        "url": "https://247wallst.com/investing/2026/04/16/oracles-new-aws-partnership-just-put-it-ahead-of-azure-and-google-cloud/?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Bullish opinion piece on Amazon citing AWS reacceleration driven by AI demand, widening competitive moat, and attractive valuation. Positive sentiment for cloud infrastructure leaders.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Direct positive catalyst with AWS growth reacceleration into AI demand wave supporting 8% portfolio position with 1.42 beta."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Correlation effect as fellow cloud/AI infrastructure leader benefiting from same enterprise AI spending tailwinds mentioned for AWS."
+        }
+      ],
+      "macro_themes": [
+        "AI infrastructure demand acceleration",
+        "Cloud computing growth reacceleration",
+        "Big Tech competitive moat expansion"
+      ],
+      "action_flags": [
+        "HOLD AMZN",
+        "MONITOR MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Why I Can\u2019t Stop Buying Amazon Stock",
+        "date": "2026-04-16T15:55:50Z",
+        "url": "https://247wallst.com/investing/2026/04/16/why-i-cant-stop-buying-amazon-stock/?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Mortgage rates fell to a 4-week low, signaling potential relief for rate-sensitive real estate assets and suggesting a pause or peak in the recent rate-hiking cycle driven by Iran war inflation concerns.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "VNQ",
+          "direction": "bullish",
+          "magnitude": "high",
+          "rationale": "Lower mortgage rates directly boost real estate demand and valuations, providing significant relief to this very-high-rate-sensitive REIT position."
+        },
+        {
+          "ticker": "TLT",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Falling mortgage rates typically correlate with declining long-term Treasury yields, benefiting this high-duration bond position."
+        },
+        {
+          "ticker": "LQD",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Lower rates reduce borrowing costs and improve credit spreads, supporting investment-grade corporate bond prices."
+        },
+        {
+          "ticker": "NEE",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Utilities benefit from lower rates due to their capital-intensive, debt-heavy business models and bond-proxy characteristics."
+        },
+        {
+          "ticker": "JPM",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Falling rates compress net interest margins, reducing the profitability boost banks enjoyed from higher rates."
+        },
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Lower rates improve consumer purchasing power and reduce financing costs for this medium-rate-sensitive consumer discretionary position."
+        }
+      ],
+      "macro_themes": [
+        "interest_rate_decline",
+        "housing_market_recovery",
+        "inflation_moderation",
+        "duration_asset_rebound"
+      ],
+      "action_flags": [
+        "HOLD VNQ",
+        "HOLD TLT",
+        "MONITOR JPM",
+        "HOLD NEE"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Mortgage rates dip to 4-week low \u2014 just in time for the best week of the year to sell a home",
+        "date": "2026-04-16T16:14:00Z",
+        "url": "https://www.marketwatch.com/story/mortgage-rates-dip-to-4-week-low-just-in-time-for-the-best-week-of-the-year-to-sell-a-home-c921a9b1?mod=mw_rss_topstories"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Comparative analysis article highlighting Johnson & Johnson's 64-year dividend streak and accelerating pharmaceutical momentum in early 2026, framing JNJ as a Dividend King with defensive qualities alongside Coca-Cola.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "JNJ",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Positive coverage of accelerating pharma momentum and 64-year dividend reliability reinforces JNJ's defensive profile and income stability in the portfolio."
+        }
+      ],
+      "macro_themes": [
+        "dividend_quality",
+        "defensive_positioning"
+      ],
+      "action_flags": [
+        "HOLD JNJ"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Might Surprise You",
+        "date": "2026-04-16T16:26:09Z",
+        "url": "https://247wallst.com/investing/2026/04/16/coca-cola-vs-johnson-johnson-the-safest-dividend-on-wall-street-might-surprise-you/?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "FCC Chair approves Amazon's acquisition of Globalstar, advancing Amazon's satellite internet ambitions and intensifying competition with SpaceX's Starlink in the space-based connectivity market.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Regulatory approval accelerates Amazon's satellite internet strategy, expanding growth potential in high-margin cloud connectivity and competing directly with SpaceX in a high-growth sector."
+        }
+      ],
+      "macro_themes": [
+        "satellite_internet_expansion",
+        "big_tech_infrastructure_investment",
+        "regulatory_approval_tailwind"
+      ],
+      "action_flags": [
+        "MONITOR AMZN",
+        "HOLD AMZN"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellite Internet Race With Elon Musk-Led SpaceX Intensifies: 'We're Very Open-Minded\u2026'",
+        "date": "2026-04-16T16:31:09Z",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/fcc-chair-brendan-carr-gives-163109389.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Jim Cramer endorses Apple stock despite YTD decline of 2.9%, noting 30% gain over past year. Positive commentary from high-profile analyst but lacks specific fundamental catalyst.",
+      "market_sentiment": "bullish",
+      "confidence": "low",
+      "affected_positions": [
+        {
+          "ticker": "AAPL",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Cramer endorsement may provide short-term sentiment boost but lacks material fundamental news to drive sustained price action."
+        }
+      ],
+      "macro_themes": [
+        "analyst_sentiment",
+        "tech_sector_confidence"
+      ],
+      "action_flags": [
+        "HOLD AAPL",
+        "MONITOR AAPL"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it",
+        "date": "2026-04-16T16:48:52Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-reveals-why-apple-164852797.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Jim Cramer commentary on Amazon with Evercore ISI price target of $285; AMZN up 9.5% YTD. Positive sentiment from analyst coverage suggesting upside potential.",
+      "market_sentiment": "bullish",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Evercore ISI $285 price target and positive YTD momentum suggest continued upside for the 8% portfolio position."
+        }
+      ],
+      "macro_themes": [
+        "Technology sector strength",
+        "Cloud services growth"
+      ],
+      "action_flags": [
+        "HOLD AMZN",
+        "MONITOR AMZN"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Jim Cramer Reveals What Amazon\u2019s (AMZN) Closely Held Secret Is",
+        "date": "2026-04-16T16:49:08Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-reveals-amazon-amzn-164908350.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Oracle and Amazon AWS announce deeper cloud integration partnership focused on AI, causing Oracle stock to rally. This signals competitive positioning shifts in enterprise cloud and AI infrastructure markets.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "AMZN",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "AWS partnership with Oracle strengthens competitive moat and accelerates AI revenue opportunities in enterprise cloud segment."
+        },
+        {
+          "ticker": "MSFT",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Oracle-AWS alliance may pressure Azure's enterprise market share, though Microsoft's OpenAI partnership remains differentiated."
+        }
+      ],
+      "macro_themes": [
+        "cloud_computing_competition",
+        "enterprise_ai_acceleration",
+        "strategic_tech_partnerships"
+      ],
+      "action_flags": [
+        "HOLD AMZN",
+        "MONITOR MSFT"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Oracle Stock Jumps on Amazon AWS Cloud Deal",
+        "date": "2026-04-16T17:15:25Z",
+        "url": "https://finance.yahoo.com/markets/stocks/articles/oracle-stock-jumps-amazon-aws-171525988.html?.tsrc=rss"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Airline stocks rallied on oil pullback following ceasefire news, but analysts warn the recovery may be fragile and headline-dependent. Event has minimal direct portfolio impact.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Oil pullback pressures energy sector margins despite ceasefire geopolitical tailwinds being short-term neutral."
+        }
+      ],
+      "macro_themes": [
+        "oil_price_volatility",
+        "geopolitical_ceasefire",
+        "airline_sector_recovery"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR oil price trends"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Airline stocks rebounded as oil pulled back. Why the rally may not last",
+        "date": "2026-04-15T17:40:35Z",
+        "url": "https://www.cnbc.com/2026/04/15/airlines-rebounded-as-crude-oil-pulled-back-the-rally-may-not-last.html"
+      }
+    },
+    {
+      "event_type": "news",
+      "summary": "Geopolitical crisis in the Strait of Hormuz has driven oil volatility, with Brent crude fluctuating around $100 amid ongoing Iran tensions, ceasefire collapses, and U.S. naval blockade announcements. Article suggests alternative oil plays may outperform traditional majors like Exxon.",
+      "market_sentiment": "mixed",
+      "confidence": "medium",
+      "affected_positions": [
+        {
+          "ticker": "XOM",
+          "direction": "neutral",
+          "magnitude": "medium",
+          "rationale": "XOM benefits from elevated oil prices but article specifically suggests competitors or upstream land owners may outperform, creating relative performance concern."
+        },
+        {
+          "ticker": "BTC",
+          "direction": "bullish",
+          "magnitude": "low",
+          "rationale": "Geopolitical instability and energy crisis typically drives safe-haven and alternative asset demand, supporting crypto despite high beta."
+        },
+        {
+          "ticker": "GLD",
+          "direction": "bullish",
+          "magnitude": "medium",
+          "rationale": "Middle East military escalation and supply disruption risk drives traditional safe-haven demand for gold."
+        },
+        {
+          "ticker": "TLT",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Oil price spikes create inflation risk that pressures long-duration Treasuries, though flight-to-quality could provide offsetting support."
+        },
+        {
+          "ticker": "AMZN",
+          "direction": "bearish",
+          "magnitude": "low",
+          "rationale": "Higher energy costs pressure consumer discretionary spending and increase logistics/delivery costs for e-commerce operations."
+        }
+      ],
+      "macro_themes": [
+        "geopolitical_risk_middle_east",
+        "oil_supply_disruption",
+        "energy_price_volatility",
+        "inflation_pressure",
+        "safe_haven_demand"
+      ],
+      "action_flags": [
+        "HOLD XOM",
+        "MONITOR GLD",
+        "MONITOR TLT",
+        "WATCH AMZN"
+      ],
+      "urgency": "watch",
+      "source_event": {
+        "source": "RSS",
+        "ticker": "",
+        "series_id": "",
+        "title": "Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns the Ground Beneath It",
+        "date": "2026-04-15T17:47:27Z",
+        "url": "https://247wallst.com/investing/2026/04/15/forget-exxon-the-smartest-oil-trade-in-2026-is-the-company-that-owns-the-ground-beneath-it/?.tsrc=rss"
+      }
+    }
+  ]
+}

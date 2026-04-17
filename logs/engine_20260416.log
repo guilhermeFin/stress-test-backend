@@ -1,0 +1,1221 @@
+2026-04-16 12:44:13,580 | INFO     | ============================================================
+2026-04-16 12:44:13,580 | INFO     | Portfolio Stress Engine — Run 20260416_124413
+2026-04-16 12:44:13,580 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 12:44:13,580 | INFO     | ============================================================
+2026-04-16 12:44:13,580 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 12:44:13,580 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 12:44:15,312 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 12:44:17,261 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 12:44:18,834 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 12:44:20,552 | WARNING  | No data returned for GDP
+2026-04-16 12:44:22,286 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 12:44:23,963 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 12:44:25,432 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 12:44:25,432 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 12:44:25,432 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 12:44:25,448 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 12:44:25,448 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 12:44:27,713 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:44:27,713 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 12:44:29,558 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:44:29,558 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 12:44:32,666 | INFO     |     >> 2 filing(s) found
+2026-04-16 12:44:32,666 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 12:44:34,212 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:44:34,212 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 12:44:36,115 | INFO     |     >> 1 filing(s) found
+2026-04-16 12:44:36,115 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 12:44:37,911 | INFO     |     >> 1 filing(s) found
+2026-04-16 12:44:37,911 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 12:44:39,665 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:44:39,665 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 12:44:39,665 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 12:44:39,772 | INFO     | Fetching news feeds...
+2026-04-16 12:44:39,870 | INFO     |   Reuters Business: 0 stories
+2026-04-16 12:44:41,701 | INFO     |   CNBC Markets: 13 stories
+2026-04-16 12:44:42,387 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 12:44:51,604 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 12:44:52,231 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 12:44:53,076 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 12:44:53,876 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 12:44:54,433 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 12:44:54,993 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 12:44:55,588 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 12:44:56,157 | INFO     |   Yahoo JNJ: 4 stories
+2026-04-16 12:44:56,719 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 12:44:57,281 | INFO     |   Yahoo NEE: 3 stories
+2026-04-16 12:44:57,844 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 12:44:58,424 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 12:44:59,016 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 12:44:59,560 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 12:45:00,115 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 12:45:00,417 | INFO     | News pull complete: 125 stories (93 flagged for Claude)
+2026-04-16 12:45:00,417 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 12:45:00,429 | INFO     |   Events queued: 103
+2026-04-16 12:45:00,432 | INFO     | Classifying 30 events with Claude...
+2026-04-16 12:45:00,433 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 12:45:11,174 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:11,240 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 12:45:11,240 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 12:45:18,498 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:18,508 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 12:45:18,514 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 12:45:26,887 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:26,890 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'LQD']
+2026-04-16 12:45:26,890 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 12:45:36,389 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:36,391 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT', 'AMZN']
+2026-04-16 12:45:36,393 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 12:45:46,620 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:46,625 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'AMZN', 'VNQ', 'LQD', 'TLT']
+2026-04-16 12:45:46,625 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 12:45:54,601 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:45:54,607 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 12:45:54,607 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 12:46:03,258 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:03,258 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'XOM', 'TLT']
+2026-04-16 12:46:03,266 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 12:46:09,344 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:09,344 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:46:09,344 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 12:46:15,940 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:15,940 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 12:46:15,940 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 12:46:23,292 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:23,292 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 12:46:23,292 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 12:46:28,657 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:28,657 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:46:28,657 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 12:46:35,627 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:35,627 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 12:46:35,627 | INFO     |   [13/30] IBM Stock Before Q1 Earnings: A Smart Buy or Risky Investment?...
+2026-04-16 12:46:41,374 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:41,374 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT']
+2026-04-16 12:46:41,374 | INFO     |   [14/30] Jim Cramer Notes “The Big Disaster of Amazon, Whatever It Was Supposed...
+2026-04-16 12:46:47,789 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:47,789 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:46:47,789 | INFO     |   [15/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 12:46:53,565 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:53,567 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 12:46:53,609 | INFO     |   [16/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 12:46:58,941 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:46:58,941 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 12:46:58,941 | INFO     |   [17/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 12:47:06,137 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:06,137 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:47:06,137 | INFO     |   [18/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 12:47:14,283 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:14,283 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'TLT', 'LQD']
+2026-04-16 12:47:14,283 | INFO     |   [19/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 12:47:20,779 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:20,782 | INFO     |   >> MIXED | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:47:20,782 | INFO     |   [20/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 12:47:31,911 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:31,913 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'TLT', 'LQD', 'NEE', 'GLD']
+2026-04-16 12:47:31,915 | INFO     |   [21/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 12:47:39,747 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:39,750 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT', 'NEE']
+2026-04-16 12:47:39,750 | INFO     |   [22/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 12:47:47,680 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:47,680 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 12:47:47,680 | INFO     |   [23/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 12:47:55,011 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:47:55,015 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 12:47:55,015 | INFO     |   [24/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 12:48:02,424 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:02,424 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:48:02,424 | INFO     |   [25/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 12:48:13,542 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:13,546 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM']
+2026-04-16 12:48:13,546 | INFO     |   [26/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 12:48:19,560 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:19,579 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 12:48:19,580 | INFO     |   [27/30] ExxonMobil & Partners Plan to Begin Deepwater Drilling Offshore Greece...
+2026-04-16 12:48:25,648 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:25,648 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:48:25,648 | INFO     |   [28/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 12:48:39,431 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:39,431 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM']
+2026-04-16 12:48:39,431 | INFO     |   [29/30] Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns ...
+2026-04-16 12:48:51,386 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:51,394 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'GLD', 'BTC', 'TLT', 'AMZN']
+2026-04-16 12:48:51,394 | INFO     |   [30/30] TeraWulf To Raise $900 Million For A.I. Data Centre Expansion...
+2026-04-16 12:48:59,078 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:48:59,078 | INFO     |   >> MIXED | urgency: watch | affects: ['BTC', 'MSFT']
+2026-04-16 12:48:59,078 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 12:48:59,104 | INFO     | 
+Output saved to: signals\output\run_20260416_124413.json
+2026-04-16 12:48:59,151 | INFO     | Run complete in 285s.
+2026-04-16 12:48:59,504 | INFO     | Auto-loaded 30 signals from run_20260416_124413.json
+2026-04-16 12:48:59,506 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 12:48:59,506 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 12:48:59,506 | INFO     |     Portfolio impact: -6.68% ($-33,375) | Tax impact: $-7,195
+2026-04-16 12:48:59,506 | INFO     |   Running scenario: Recession...
+2026-04-16 12:48:59,506 | INFO     |     Portfolio impact: -13.84% ($-69,175) | Tax impact: $-16,615
+2026-04-16 12:48:59,514 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 12:48:59,514 | INFO     |     Portfolio impact: -14.52% ($-72,575) | Tax impact: $-16,215
+2026-04-16 12:48:59,514 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 12:48:59,514 | INFO     |     Portfolio impact: -4.0% ($-19,975) | Tax impact: $-6,930
+2026-04-16 12:48:59,514 | INFO     |   Expected weighted loss: $-31,092
+2026-04-16 12:48:59,514 | INFO     |   Worst case: Credit Crisis ($-72,575)
+2026-04-16 12:48:59,571 | INFO     | Stress test saved to: signals\output\stress_20260416_124859.json
+2026-04-16 12:48:59,596 | INFO     | Loading data for memo generation...
+2026-04-16 12:48:59,604 | INFO     | Loaded signals from run_20260416_124413.json
+2026-04-16 12:48:59,620 | INFO     | Loaded stress test from stress_20260416_124859.json
+2026-04-16 12:53:24,104 | INFO     | ============================================================
+2026-04-16 12:53:24,108 | INFO     | Portfolio Stress Engine — Run 20260416_125324
+2026-04-16 12:53:24,108 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 12:53:24,108 | INFO     | ============================================================
+2026-04-16 12:53:24,108 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 12:53:24,109 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 12:53:25,880 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 12:53:27,399 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 12:53:28,918 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 12:53:30,433 | WARNING  | No data returned for GDP
+2026-04-16 12:53:31,883 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 12:53:33,374 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 12:53:34,985 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 12:53:34,988 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 12:53:34,989 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 12:53:34,989 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 12:53:34,989 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 12:53:36,651 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:53:36,689 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 12:53:38,521 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:53:38,523 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 12:53:40,814 | INFO     |     >> 2 filing(s) found
+2026-04-16 12:53:40,816 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 12:53:42,522 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:53:42,522 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 12:53:44,217 | INFO     |     >> 1 filing(s) found
+2026-04-16 12:53:44,217 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 12:53:45,914 | INFO     |     >> 1 filing(s) found
+2026-04-16 12:53:45,914 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 12:53:47,645 | INFO     |     >> 0 filing(s) found
+2026-04-16 12:53:47,651 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 12:53:47,651 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 12:53:47,653 | INFO     | Fetching news feeds...
+2026-04-16 12:53:47,727 | INFO     |   Reuters Business: 0 stories
+2026-04-16 12:53:49,335 | INFO     |   CNBC Markets: 13 stories
+2026-04-16 12:53:50,030 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 12:54:01,134 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 12:54:01,787 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 12:54:02,603 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 12:54:03,392 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 12:54:03,975 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 12:54:04,609 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 12:54:05,194 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 12:54:05,832 | INFO     |   Yahoo JNJ: 5 stories
+2026-04-16 12:54:06,473 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 12:54:07,063 | INFO     |   Yahoo NEE: 3 stories
+2026-04-16 12:54:07,644 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 12:54:08,228 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 12:54:08,876 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 12:54:09,483 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 12:54:10,085 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 12:54:10,477 | INFO     | News pull complete: 127 stories (94 flagged for Claude)
+2026-04-16 12:54:10,480 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 12:54:10,480 | INFO     |   Events queued: 104
+2026-04-16 12:54:10,482 | INFO     | Classifying 30 events with Claude...
+2026-04-16 12:54:10,482 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 12:54:18,786 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:54:18,788 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 12:54:18,788 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 12:54:26,923 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:54:26,923 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 12:54:26,923 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 12:54:35,794 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:54:35,803 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'LQD', 'MSFT']
+2026-04-16 12:54:35,803 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 12:54:44,956 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:54:44,978 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT', 'AMZN']
+2026-04-16 12:54:44,978 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 12:54:56,508 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:54:56,510 | INFO     |   >> BULLISH | urgency: this_week | affects: ['JPM', 'AMZN', 'AAPL', 'TLT', 'GLD']
+2026-04-16 12:54:56,512 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 12:55:04,547 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:04,556 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 12:55:04,561 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 12:55:12,485 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:12,491 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'TLT', 'LQD']
+2026-04-16 12:55:12,492 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 12:55:19,392 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:19,397 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:55:19,397 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 12:55:25,165 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:25,167 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 12:55:25,167 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 12:55:33,102 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:33,103 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 12:55:33,106 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 12:55:40,524 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:40,526 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:55:40,528 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 12:55:49,075 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:49,075 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 12:55:49,075 | INFO     |   [13/30] IBM Stock Before Q1 Earnings: A Smart Buy or Risky Investment?...
+2026-04-16 12:55:55,277 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:55:55,278 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['MSFT']
+2026-04-16 12:55:55,280 | INFO     |   [14/30] Jim Cramer Notes “The Big Disaster of Amazon, Whatever It Was Supposed...
+2026-04-16 12:56:02,378 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:02,390 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 12:56:02,392 | INFO     |   [15/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 12:56:13,015 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:13,019 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 12:56:13,019 | INFO     |   [16/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 12:56:18,251 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:18,253 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 12:56:18,253 | INFO     |   [17/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 12:56:24,539 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:24,542 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['AMZN']
+2026-04-16 12:56:24,542 | INFO     |   [18/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 12:56:31,757 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:31,759 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 12:56:31,761 | INFO     |   [19/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 12:56:38,713 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:38,716 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:56:38,717 | INFO     |   [20/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 12:56:50,617 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:50,624 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'TLT', 'LQD', 'NEE', 'VNQ']
+2026-04-16 12:56:50,624 | INFO     |   [21/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 12:56:57,716 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:56:57,716 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT']
+2026-04-16 12:56:57,725 | INFO     |   [22/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 12:57:05,978 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:05,982 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 12:57:05,982 | INFO     |   [23/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 12:57:14,031 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:14,033 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 12:57:14,033 | INFO     |   [24/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 12:57:21,442 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:21,442 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 12:57:21,442 | INFO     |   [25/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 12:57:33,391 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:33,391 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM', 'GLD']
+2026-04-16 12:57:33,391 | INFO     |   [26/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 12:57:39,070 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:39,070 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['JNJ']
+2026-04-16 12:57:39,070 | INFO     |   [27/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 12:57:45,033 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:45,048 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 12:57:45,049 | INFO     |   [28/30] ExxonMobil & Partners Plan to Begin Deepwater Drilling Offshore Greece...
+2026-04-16 12:57:50,403 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:50,408 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 12:57:50,408 | INFO     |   [29/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 12:57:56,790 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:57:56,795 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'AMZN']
+2026-04-16 12:57:56,795 | INFO     |   [30/30] Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns ...
+2026-04-16 12:58:10,635 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 12:58:10,635 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'BTC', 'GLD', 'TLT', 'AMZN', 'VNQ']
+2026-04-16 12:58:10,638 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 12:58:10,654 | INFO     | 
+Output saved to: signals\output\run_20260416_125324.json
+2026-04-16 12:58:10,678 | INFO     | Run complete in 286s.
+2026-04-16 12:58:10,723 | INFO     | Auto-loaded 30 signals from run_20260416_125324.json
+2026-04-16 12:58:10,723 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 12:58:10,723 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 12:58:10,723 | INFO     |     Portfolio impact: -6.87% ($-34,325) | Tax impact: $-7,385
+2026-04-16 12:58:10,723 | INFO     |   Running scenario: Recession...
+2026-04-16 12:58:10,723 | INFO     |     Portfolio impact: -14.03% ($-70,125) | Tax impact: $-16,570
+2026-04-16 12:58:10,723 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 12:58:10,723 | INFO     |     Portfolio impact: -14.7% ($-73,525) | Tax impact: $-16,170
+2026-04-16 12:58:10,723 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 12:58:10,723 | INFO     |     Portfolio impact: -4.19% ($-20,925) | Tax impact: $-7,240
+2026-04-16 12:58:10,723 | INFO     |   Expected weighted loss: $-31,758
+2026-04-16 12:58:10,723 | INFO     |   Worst case: Credit Crisis ($-73,525)
+2026-04-16 12:58:10,755 | INFO     | Stress test saved to: signals\output\stress_20260416_125810.json
+2026-04-16 12:58:10,788 | INFO     | Loading data for memo generation...
+2026-04-16 12:58:10,792 | INFO     | Loaded signals from run_20260416_125324.json
+2026-04-16 12:58:10,808 | INFO     | Loaded stress test from stress_20260416_125810.json
+2026-04-16 13:02:31,824 | INFO     | ============================================================
+2026-04-16 13:02:31,824 | INFO     | Portfolio Stress Engine — Run 20260416_130231
+2026-04-16 13:02:31,824 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 13:02:31,828 | INFO     | ============================================================
+2026-04-16 13:02:31,828 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 13:02:31,828 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 13:02:33,629 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 13:02:35,293 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 13:02:37,190 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 13:02:38,712 | WARNING  | No data returned for GDP
+2026-04-16 13:02:40,390 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 13:02:42,754 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 13:02:44,397 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 13:02:44,397 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 13:02:44,397 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 13:02:44,401 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 13:02:44,401 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 13:02:46,839 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:02:46,840 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 13:02:47,911 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:02:47,911 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 13:02:49,351 | INFO     |     >> 2 filing(s) found
+2026-04-16 13:02:49,351 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 13:02:50,542 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:02:50,542 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 13:02:51,652 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:02:51,656 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 13:02:52,766 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:02:52,766 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 13:02:54,594 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:02:54,594 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 13:02:54,594 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 13:02:54,596 | INFO     | Fetching news feeds...
+2026-04-16 13:02:54,638 | INFO     |   Reuters Business: 0 stories
+2026-04-16 13:02:55,638 | INFO     |   CNBC Markets: 13 stories
+2026-04-16 13:02:56,288 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 13:03:07,634 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 13:03:08,258 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 13:03:09,066 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 13:03:09,864 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 13:03:10,431 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 13:03:10,996 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 13:03:11,561 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 13:03:12,113 | INFO     |   Yahoo JNJ: 5 stories
+2026-04-16 13:03:12,678 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 13:03:13,229 | INFO     |   Yahoo NEE: 3 stories
+2026-04-16 13:03:13,816 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 13:03:14,396 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 13:03:14,959 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 13:03:15,536 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 13:03:16,113 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 13:03:16,419 | INFO     | News pull complete: 127 stories (93 flagged for Claude)
+2026-04-16 13:03:16,421 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 13:03:16,421 | INFO     |   Events queued: 103
+2026-04-16 13:03:16,423 | INFO     | Classifying 30 events with Claude...
+2026-04-16 13:03:16,423 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 13:03:23,951 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:03:23,954 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 13:03:23,954 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 13:03:32,519 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:03:32,525 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 13:03:32,525 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 13:03:42,124 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:03:42,126 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'LQD']
+2026-04-16 13:03:42,126 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 13:03:50,235 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:03:50,239 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:03:50,240 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 13:04:01,881 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:01,883 | INFO     |   >> BULLISH | urgency: this_week | affects: ['JPM', 'TLT', 'LQD', 'VNQ', 'NEE', 'AMZN']
+2026-04-16 13:04:01,883 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 13:04:09,819 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:09,821 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:04:09,821 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 13:04:18,081 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:18,083 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'TLT', 'LQD']
+2026-04-16 13:04:18,083 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 13:04:23,946 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:23,947 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:04:23,947 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 13:04:29,645 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:29,647 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:04:29,647 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 13:04:38,578 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:38,582 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 13:04:38,582 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 13:04:44,422 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:44,423 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:04:44,423 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 13:04:52,087 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:52,089 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 13:04:52,092 | INFO     |   [13/30] IBM Stock Before Q1 Earnings: A Smart Buy or Risky Investment?...
+2026-04-16 13:04:56,606 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:04:56,609 | INFO     |   >> NEUTRAL | urgency: watch | affects: []
+2026-04-16 13:04:56,609 | INFO     |   [14/30] Jim Cramer Notes “The Big Disaster of Amazon, Whatever It Was Supposed...
+2026-04-16 13:05:04,027 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:04,032 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:05:04,032 | INFO     |   [15/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 13:05:10,768 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:10,770 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:05:10,770 | INFO     |   [16/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 13:05:16,719 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:16,721 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 13:05:16,721 | INFO     |   [17/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 13:05:24,714 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:24,714 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:05:24,714 | INFO     |   [18/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 13:05:31,046 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:31,048 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 13:05:31,050 | INFO     |   [19/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 13:05:38,984 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:38,998 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:05:39,008 | INFO     |   [20/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 13:05:51,151 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:51,155 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'TLT', 'LQD', 'GLD', 'NEE']
+2026-04-16 13:05:51,155 | INFO     |   [21/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 13:05:58,632 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:05:58,634 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT', 'NEE']
+2026-04-16 13:05:58,634 | INFO     |   [22/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 13:06:08,609 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:08,611 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT', 'LQD']
+2026-04-16 13:06:08,612 | INFO     |   [23/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 13:06:16,847 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:16,854 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 13:06:16,854 | INFO     |   [24/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 13:06:25,113 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:25,116 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:06:25,116 | INFO     |   [25/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 13:06:36,438 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:36,440 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM']
+2026-04-16 13:06:36,440 | INFO     |   [26/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 13:06:43,344 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:43,357 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:06:43,361 | INFO     |   [27/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 13:06:53,549 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:53,553 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:06:53,553 | INFO     |   [28/30] Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it...
+2026-04-16 13:06:59,940 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:06:59,944 | INFO     |   >> BULLISH | urgency: watch | affects: ['AAPL']
+2026-04-16 13:06:59,944 | INFO     |   [29/30] ExxonMobil & Partners Plan to Begin Deepwater Drilling Offshore Greece...
+2026-04-16 13:07:06,434 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:07:06,437 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 13:07:06,437 | INFO     |   [30/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 13:07:13,639 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:07:13,643 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'AMZN']
+2026-04-16 13:07:13,643 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 13:07:13,664 | INFO     | 
+Output saved to: signals\output\run_20260416_130231.json
+2026-04-16 13:07:13,693 | INFO     | Run complete in 281s.
+2026-04-16 13:07:14,052 | INFO     | Auto-loaded 30 signals from run_20260416_130231.json
+2026-04-16 13:07:14,053 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 13:07:14,054 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 13:07:14,054 | INFO     |     Portfolio impact: -6.83% ($-34,175) | Tax impact: $-7,355
+2026-04-16 13:07:14,054 | INFO     |   Running scenario: Recession...
+2026-04-16 13:07:14,054 | INFO     |     Portfolio impact: -13.99% ($-69,975) | Tax impact: $-16,570
+2026-04-16 13:07:14,054 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 13:07:14,054 | INFO     |     Portfolio impact: -14.67% ($-73,375) | Tax impact: $-16,170
+2026-04-16 13:07:14,054 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 13:07:14,060 | INFO     |     Portfolio impact: -4.15% ($-20,775) | Tax impact: $-7,105
+2026-04-16 13:07:14,062 | INFO     |   Expected weighted loss: $-31,652
+2026-04-16 13:07:14,064 | INFO     |   Worst case: Credit Crisis ($-73,375)
+2026-04-16 13:07:14,110 | INFO     | Stress test saved to: signals\output\stress_20260416_130714.json
+2026-04-16 13:07:14,132 | INFO     | Loading data for memo generation...
+2026-04-16 13:07:14,137 | INFO     | Loaded signals from run_20260416_130231.json
+2026-04-16 13:07:14,152 | INFO     | Loaded stress test from stress_20260416_130714.json
+2026-04-16 13:12:13,740 | INFO     | ============================================================
+2026-04-16 13:12:13,740 | INFO     | Portfolio Stress Engine — Run 20260416_131213
+2026-04-16 13:12:13,740 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 13:12:13,740 | INFO     | ============================================================
+2026-04-16 13:12:13,740 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 13:12:13,740 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 13:12:15,293 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 13:12:16,817 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 13:12:18,268 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 13:12:19,906 | WARNING  | No data returned for GDP
+2026-04-16 13:12:21,380 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 13:12:23,001 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 13:12:24,653 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 13:12:24,654 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 13:12:24,654 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 13:12:24,657 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 13:12:24,658 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 13:12:26,223 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:12:26,223 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 13:12:28,096 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:12:28,096 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 13:12:30,625 | INFO     |     >> 2 filing(s) found
+2026-04-16 13:12:30,625 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 13:12:32,723 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:12:32,723 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 13:12:34,990 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:12:34,990 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 13:12:37,569 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:12:37,569 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 13:12:39,485 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:12:39,485 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 13:12:39,487 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 13:12:39,487 | INFO     | Fetching news feeds...
+2026-04-16 13:12:39,573 | INFO     |   Reuters Business: 0 stories
+2026-04-16 13:12:40,321 | INFO     |   CNBC Markets: 13 stories
+2026-04-16 13:12:40,996 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 13:12:50,162 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 13:12:50,883 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 13:12:51,642 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 13:12:52,408 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 13:12:52,969 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 13:12:53,522 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 13:12:54,079 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 13:12:54,644 | INFO     |   Yahoo JNJ: 5 stories
+2026-04-16 13:12:55,204 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 13:12:55,740 | INFO     |   Yahoo NEE: 2 stories
+2026-04-16 13:12:56,304 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 13:12:56,848 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 13:12:57,394 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 13:12:58,007 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 13:12:58,563 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 13:12:58,865 | INFO     | News pull complete: 126 stories (95 flagged for Claude)
+2026-04-16 13:12:58,865 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 13:12:58,865 | INFO     |   Events queued: 105
+2026-04-16 13:12:58,865 | INFO     | Classifying 30 events with Claude...
+2026-04-16 13:12:58,865 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 13:13:06,504 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:06,507 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 13:13:06,508 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 13:13:14,189 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:14,193 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 13:13:14,193 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 13:13:20,384 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:20,387 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC']
+2026-04-16 13:13:20,389 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 13:13:28,864 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:28,874 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:13:28,874 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 13:13:40,880 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:40,889 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'AMZN', 'AAPL', 'TLT', 'LQD', 'BTC']
+2026-04-16 13:13:40,889 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 13:13:48,458 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:48,458 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:13:48,458 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 13:13:56,129 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:13:56,131 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'XOM', 'TLT']
+2026-04-16 13:13:56,131 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 13:14:01,239 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:01,242 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:14:01,242 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 13:14:05,849 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:05,849 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:14:05,863 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 13:14:12,982 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:13,003 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 13:14:13,003 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 13:14:18,754 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:18,754 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:14:18,754 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 13:14:27,215 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:27,217 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 13:14:27,217 | INFO     |   [13/30] Jim Cramer Notes “The Big Disaster of Amazon, Whatever It Was Supposed...
+2026-04-16 13:14:34,428 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:34,428 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:14:34,434 | INFO     |   [14/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 13:14:40,118 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:40,118 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:14:40,118 | INFO     |   [15/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 13:14:45,864 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:45,871 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 13:14:45,873 | INFO     |   [16/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 13:14:51,440 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:51,440 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:14:51,440 | INFO     |   [17/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 13:14:57,887 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:14:57,890 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 13:14:57,897 | INFO     |   [18/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 13:15:06,603 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:06,610 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:15:06,610 | INFO     |   [19/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 13:15:16,638 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:16,638 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'TLT', 'LQD', 'GLD', 'NEE']
+2026-04-16 13:15:16,638 | INFO     |   [20/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 13:15:24,325 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:24,327 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT', 'NEE']
+2026-04-16 13:15:24,327 | INFO     |   [21/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 13:15:31,639 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:31,647 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 13:15:31,647 | INFO     |   [22/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 13:15:39,566 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:39,590 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 13:15:39,590 | INFO     |   [23/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 13:15:47,422 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:47,422 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:15:47,429 | INFO     |   [24/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 13:15:58,855 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:15:58,863 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM', 'GLD']
+2026-04-16 13:15:58,863 | INFO     |   [25/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 13:16:04,828 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:04,844 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:16:04,844 | INFO     |   [26/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 13:16:11,433 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:11,433 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:16:11,439 | INFO     |   [27/30] Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it...
+2026-04-16 13:16:17,405 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:17,405 | INFO     |   >> BULLISH | urgency: watch | affects: ['AAPL']
+2026-04-16 13:16:17,405 | INFO     |   [28/30] Jim Cramer Reveals What Amazon’s (AMZN) Closely Held Secret Is...
+2026-04-16 13:16:24,621 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:24,627 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:16:24,627 | INFO     |   [29/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 13:16:30,696 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:30,710 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'AMZN']
+2026-04-16 13:16:30,710 | INFO     |   [30/30] Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns ...
+2026-04-16 13:16:42,562 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:16:42,562 | INFO     |   >> MIXED | urgency: immediate | affects: ['XOM', 'GLD', 'TLT', 'BTC', 'AMZN', 'VNQ']
+2026-04-16 13:16:42,562 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 13:16:42,562 | INFO     | 
+Output saved to: signals\output\run_20260416_131213.json
+2026-04-16 13:16:42,596 | INFO     | Run complete in 268s.
+2026-04-16 13:16:42,945 | INFO     | Auto-loaded 30 signals from run_20260416_131213.json
+2026-04-16 13:16:42,947 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 13:16:42,947 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 13:16:42,947 | INFO     |     Portfolio impact: -6.59% ($-32,950) | Tax impact: $-7,110
+2026-04-16 13:16:42,949 | INFO     |   Running scenario: Recession...
+2026-04-16 13:16:42,949 | INFO     |     Portfolio impact: -13.75% ($-68,750) | Tax impact: $-16,530
+2026-04-16 13:16:42,949 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 13:16:42,949 | INFO     |     Portfolio impact: -14.43% ($-72,150) | Tax impact: $-16,130
+2026-04-16 13:16:42,949 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 13:16:42,949 | INFO     |     Portfolio impact: -3.91% ($-19,550) | Tax impact: $-6,950
+2026-04-16 13:16:42,949 | INFO     |   Expected weighted loss: $-30,795
+2026-04-16 13:16:42,949 | INFO     |   Worst case: Credit Crisis ($-72,150)
+2026-04-16 13:16:42,982 | INFO     | Stress test saved to: signals\output\stress_20260416_131642.json
+2026-04-16 13:16:43,000 | INFO     | Loading data for memo generation...
+2026-04-16 13:16:43,002 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:16:43,020 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:19:18,012 | INFO     | Loading data for memo generation...
+2026-04-16 13:19:18,017 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:19:18,017 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:22:10,836 | INFO     | Loading data for memo generation...
+2026-04-16 13:22:10,836 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:22:10,844 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:22:12,383 | INFO     | Loading data for memo generation...
+2026-04-16 13:22:12,388 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:22:12,393 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:22:14,330 | INFO     | Loading data for memo generation...
+2026-04-16 13:22:14,332 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:22:14,336 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:22:24,612 | INFO     | Loading data for memo generation...
+2026-04-16 13:22:24,614 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:22:24,617 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:22:57,878 | INFO     | Loading data for memo generation...
+2026-04-16 13:22:57,884 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:22:57,886 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:23:52,808 | INFO     | Loading data for memo generation...
+2026-04-16 13:23:52,812 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:23:52,815 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:24:24,056 | INFO     | Loading data for memo generation...
+2026-04-16 13:24:24,058 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:24:24,064 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:26:28,916 | INFO     | Loading data for memo generation...
+2026-04-16 13:26:28,919 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:26:28,921 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:26:38,162 | INFO     | Loading data for memo generation...
+2026-04-16 13:26:38,165 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:26:38,166 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:28:57,544 | INFO     | Loading data for memo generation...
+2026-04-16 13:28:57,547 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:28:57,547 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:28:57,867 | INFO     | Loading data for memo generation...
+2026-04-16 13:28:57,876 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:28:57,876 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:29:01,870 | INFO     | Loading data for memo generation...
+2026-04-16 13:29:01,878 | INFO     | Loaded signals from run_20260416_131213.json
+2026-04-16 13:29:01,878 | INFO     | Loaded stress test from stress_20260416_131642.json
+2026-04-16 13:32:12,685 | INFO     | ============================================================
+2026-04-16 13:32:12,693 | INFO     | Portfolio Stress Engine — Run 20260416_133212
+2026-04-16 13:32:12,693 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 13:32:12,693 | INFO     | ============================================================
+2026-04-16 13:32:12,693 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 13:32:12,701 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 13:32:13,661 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 13:32:14,525 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 13:32:15,545 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 13:32:16,695 | WARNING  | No data returned for GDP
+2026-04-16 13:32:17,828 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 13:32:18,855 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 13:32:20,197 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 13:32:20,197 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 13:32:20,197 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 13:32:20,204 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 13:32:20,204 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 13:32:21,220 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:32:21,220 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 13:32:22,391 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:32:22,395 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 13:32:23,787 | INFO     |     >> 2 filing(s) found
+2026-04-16 13:32:23,787 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 13:32:25,078 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:32:25,078 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 13:32:26,165 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:32:26,165 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 13:32:27,239 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:32:27,239 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 13:32:28,373 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:32:28,373 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 13:32:28,373 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 13:32:28,427 | INFO     | Fetching news feeds...
+2026-04-16 13:32:28,520 | INFO     |   Reuters Business: 0 stories
+2026-04-16 13:32:29,618 | INFO     |   CNBC Markets: 15 stories
+2026-04-16 13:32:30,276 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 13:32:40,286 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 13:32:40,904 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 13:32:41,686 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 13:32:42,420 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 13:32:42,938 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 13:32:43,462 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 13:32:43,967 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 13:32:44,479 | INFO     |   Yahoo JNJ: 5 stories
+2026-04-16 13:32:44,995 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 13:32:45,563 | INFO     |   Yahoo NEE: 2 stories
+2026-04-16 13:32:46,128 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 13:32:46,683 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 13:32:47,239 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 13:32:47,823 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 13:32:48,380 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 13:32:48,685 | INFO     | News pull complete: 129 stories (99 flagged for Claude)
+2026-04-16 13:32:48,685 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 13:32:48,690 | INFO     |   Events queued: 109
+2026-04-16 13:32:48,690 | INFO     | Classifying 30 events with Claude...
+2026-04-16 13:32:48,690 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 13:32:56,119 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:32:56,119 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 13:32:56,119 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 13:33:04,419 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:04,419 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 13:33:04,419 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 13:33:12,362 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:12,362 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'LQD']
+2026-04-16 13:33:12,362 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 13:33:20,502 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:20,502 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:33:20,502 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 13:33:32,971 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:32,971 | INFO     |   >> BULLISH | urgency: this_week | affects: ['JPM', 'XOM', 'AMZN', 'TLT', 'LQD', 'VNQ']
+2026-04-16 13:33:32,971 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 13:33:40,386 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:40,401 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:33:40,403 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 13:33:50,285 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:50,285 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'TLT', 'LQD', 'XOM']
+2026-04-16 13:33:50,285 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 13:33:56,269 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:33:56,269 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:33:56,269 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 13:34:02,563 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:02,565 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:34:02,566 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 13:34:09,982 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:09,986 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 13:34:09,986 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 13:34:16,371 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:16,371 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:34:16,371 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 13:34:23,179 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:23,181 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 13:34:23,181 | INFO     |   [13/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 13:34:29,732 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:29,734 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:34:29,734 | INFO     |   [14/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 13:34:36,366 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:36,369 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 13:34:36,369 | INFO     |   [15/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 13:34:44,660 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:44,662 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:34:44,662 | INFO     |   [16/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 13:34:51,214 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:51,214 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 13:34:51,214 | INFO     |   [17/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 13:34:58,429 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:34:58,437 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:34:58,437 | INFO     |   [18/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 13:35:11,832 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:11,832 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'TLT', 'LQD', 'GLD']
+2026-04-16 13:35:11,832 | INFO     |   [19/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 13:35:19,251 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:19,251 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT']
+2026-04-16 13:35:19,251 | INFO     |   [20/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 13:35:26,984 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:26,984 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'LQD']
+2026-04-16 13:35:26,984 | INFO     |   [21/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 13:35:34,718 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:34,718 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 13:35:34,718 | INFO     |   [22/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 13:35:42,360 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:42,368 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:35:42,368 | INFO     |   [23/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 13:35:54,501 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:35:54,513 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM', 'AMZN']
+2026-04-16 13:35:54,513 | INFO     |   [24/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 13:36:03,996 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:04,001 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:36:04,001 | INFO     |   [25/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 13:36:10,560 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:10,560 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:36:10,567 | INFO     |   [26/30] Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it...
+2026-04-16 13:36:16,550 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:16,550 | INFO     |   >> BULLISH | urgency: watch | affects: ['AAPL']
+2026-04-16 13:36:16,550 | INFO     |   [27/30] Jim Cramer Reveals What Amazon’s (AMZN) Closely Held Secret Is...
+2026-04-16 13:36:23,184 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:23,184 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:36:23,184 | INFO     |   [28/30] Oracle Stock Jumps on Amazon AWS Cloud Deal...
+2026-04-16 13:36:30,200 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:30,200 | INFO     |   >> MIXED | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:36:30,200 | INFO     |   [29/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 13:36:36,450 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:36,450 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM']
+2026-04-16 13:36:36,450 | INFO     |   [30/30] Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns ...
+2026-04-16 13:36:49,060 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:36:49,060 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'BTC', 'GLD', 'TLT', 'AMZN']
+2026-04-16 13:36:49,060 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 13:36:49,087 | INFO     | 
+Output saved to: signals\output\run_20260416_133212.json
+2026-04-16 13:36:49,120 | INFO     | Run complete in 276s.
+2026-04-16 13:36:49,137 | INFO     | ============================================================
+2026-04-16 13:36:49,137 | INFO     | Portfolio Stress Engine — Run 20260416_133649
+2026-04-16 13:36:49,140 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 13:36:49,144 | INFO     | ============================================================
+2026-04-16 13:36:49,144 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 13:36:49,144 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 13:36:50,776 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 13:36:52,309 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 13:36:53,942 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 13:36:55,492 | WARNING  | No data returned for GDP
+2026-04-16 13:36:57,025 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 13:36:58,592 | INFO     |   DGS10: 4.26 % (-0.04) as of 2026-04-14
+2026-04-16 13:37:00,109 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 13:37:00,109 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 13:37:00,109 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 13:37:00,121 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 13:37:00,121 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 13:37:01,863 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:37:01,863 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 13:37:03,628 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:37:03,628 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 13:37:05,951 | INFO     |     >> 2 filing(s) found
+2026-04-16 13:37:05,953 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 13:37:07,758 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:37:07,758 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 13:37:09,608 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:37:09,608 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 13:37:11,362 | INFO     |     >> 1 filing(s) found
+2026-04-16 13:37:11,362 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 13:37:13,453 | INFO     |     >> 0 filing(s) found
+2026-04-16 13:37:13,458 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 13:37:13,458 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 13:37:13,458 | INFO     | Fetching news feeds...
+2026-04-16 13:37:13,542 | INFO     |   Reuters Business: 0 stories
+2026-04-16 13:37:14,492 | INFO     |   CNBC Markets: 15 stories
+2026-04-16 13:37:15,175 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 13:37:24,558 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 13:37:25,209 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 13:37:25,990 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 13:37:26,775 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 13:37:27,332 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 13:37:27,891 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 13:37:28,441 | INFO     |   Yahoo XOM: 10 stories
+2026-04-16 13:37:28,991 | INFO     |   Yahoo JNJ: 5 stories
+2026-04-16 13:37:29,558 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 13:37:30,108 | INFO     |   Yahoo NEE: 2 stories
+2026-04-16 13:37:30,658 | INFO     |   Yahoo GLD: 4 stories
+2026-04-16 13:37:31,241 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 13:37:31,801 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 13:37:32,406 | INFO     |   Yahoo BTC: 7 stories
+2026-04-16 13:37:32,959 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 13:37:33,267 | INFO     | News pull complete: 129 stories (98 flagged for Claude)
+2026-04-16 13:37:33,267 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 13:37:33,267 | INFO     |   Events queued: 108
+2026-04-16 13:37:33,267 | INFO     | Classifying 30 events with Claude...
+2026-04-16 13:37:33,267 | INFO     |   [1/30] NextEra (NEE): Jefferies Raises Target as Data Center Deals Come Into ...
+2026-04-16 13:37:40,191 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:37:40,200 | INFO     |   >> BULLISH | urgency: watch | affects: ['NEE', 'MSFT']
+2026-04-16 13:37:40,200 | INFO     |   [2/30] X Rolls Out Smart Cashtags for Crypto and Stocks in Step Toward a Bigg...
+2026-04-16 13:37:48,333 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:37:48,342 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'AAPL']
+2026-04-16 13:37:48,342 | INFO     |   [3/30] Strive Raises SATA Preferred Yield to 13%; Tops Hut 8 in Bitcoin Holdi...
+2026-04-16 13:37:56,519 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:37:56,519 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'LQD']
+2026-04-16 13:37:56,519 | INFO     |   [4/30] Anthropic's Mythos Triggers Cybersecurity Race — CrowdStrike, Rubrik, ...
+2026-04-16 13:38:05,974 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:05,983 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT', 'AMZN']
+2026-04-16 13:38:05,996 | INFO     |   [5/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 13:38:15,808 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:15,808 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT', 'AAPL', 'AMZN', 'TLT', 'GLD']
+2026-04-16 13:38:15,808 | INFO     |   [6/30] How The Apple (AAPL) Investment Story Is Shifting On AI, China And Val...
+2026-04-16 13:38:24,108 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:24,108 | INFO     |   >> MIXED | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 13:38:24,108 | INFO     |   [7/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 13:38:32,174 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:32,174 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'TLT', 'LQD']
+2026-04-16 13:38:32,174 | INFO     |   [8/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 13:38:38,491 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:38,491 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:38:38,491 | INFO     |   [9/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 13:38:45,391 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:45,391 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:38:45,391 | INFO     |   [10/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 13:38:53,991 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:38:54,004 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 13:38:54,004 | INFO     |   [11/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 13:39:01,257 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:01,257 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 13:39:01,257 | INFO     |   [12/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 13:39:10,490 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:10,501 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 13:39:10,501 | INFO     |   [13/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 13:39:17,190 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:17,190 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:39:17,190 | INFO     |   [14/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 13:39:22,440 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:22,440 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 13:39:22,455 | INFO     |   [15/30] Quantiphi Named First Preferred Amazon Quick SI Partner by AWS Generat...
+2026-04-16 13:39:29,774 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:29,774 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:39:29,774 | INFO     |   [16/30] U.S. Bancorp Q1 Earnings Call Highlights...
+2026-04-16 13:39:36,257 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:36,271 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 13:39:36,271 | INFO     |   [17/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 13:39:43,273 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:43,273 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:39:43,273 | INFO     |   [18/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 13:39:53,290 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:53,290 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'TLT', 'LQD', 'GLD', 'NEE']
+2026-04-16 13:39:53,290 | INFO     |   [19/30] Schneider Electric unveils next generation agentic manufacturing capab...
+2026-04-16 13:39:59,773 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:39:59,773 | INFO     |   >> BULLISH | urgency: watch | affects: ['MSFT']
+2026-04-16 13:39:59,773 | INFO     |   [20/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 13:40:08,220 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:08,223 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 13:40:08,223 | INFO     |   [21/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 13:40:15,166 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:15,166 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 13:40:15,166 | INFO     |   [22/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 13:40:23,440 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:23,440 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:40:23,440 | INFO     |   [23/30] Mortgage rates dip to 4-week low — just in time for the best week of t...
+2026-04-16 13:40:35,740 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:35,756 | INFO     |   >> BULLISH | urgency: watch | affects: ['VNQ', 'TLT', 'LQD', 'NEE', 'JPM', 'GLD']
+2026-04-16 13:40:35,756 | INFO     |   [24/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 13:40:42,024 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:42,035 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 13:40:42,035 | INFO     |   [25/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 13:40:48,456 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:48,461 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:40:48,463 | INFO     |   [26/30] Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it...
+2026-04-16 13:40:54,608 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:40:54,609 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['AAPL']
+2026-04-16 13:40:54,611 | INFO     |   [27/30] Jim Cramer Reveals What Amazon’s (AMZN) Closely Held Secret Is...
+2026-04-16 13:41:00,894 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:41:00,901 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 13:41:00,903 | INFO     |   [28/30] Oracle Stock Jumps on Amazon AWS Cloud Deal...
+2026-04-16 13:41:08,578 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:41:08,581 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 13:41:08,581 | INFO     |   [29/30] Airline stocks rebounded as oil pulled back. Why the rally may not las...
+2026-04-16 13:41:15,118 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:41:15,124 | INFO     |   >> MIXED | urgency: watch | affects: ['XOM', 'AMZN']
+2026-04-16 13:41:15,124 | INFO     |   [30/30] Forget Exxon. The Smartest Oil Trade in 2026 Is the Company That Owns ...
+2026-04-16 13:41:27,285 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:41:27,287 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'GLD', 'BTC', 'AMZN', 'TLT']
+2026-04-16 13:41:27,289 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 13:41:27,308 | INFO     | 
+Output saved to: signals\output\run_20260416_133649.json
+2026-04-16 13:41:27,336 | INFO     | Run complete in 278s.
+2026-04-16 13:41:27,681 | INFO     | Auto-loaded 30 signals from run_20260416_133649.json
+2026-04-16 13:41:27,681 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 13:41:27,683 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 13:41:27,683 | INFO     |     Portfolio impact: -6.78% ($-33,900) | Tax impact: $-7,300
+2026-04-16 13:41:27,683 | INFO     |   Running scenario: Recession...
+2026-04-16 13:41:27,685 | INFO     |     Portfolio impact: -13.94% ($-69,700) | Tax impact: $-16,670
+2026-04-16 13:41:27,685 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 13:41:27,685 | INFO     |     Portfolio impact: -14.62% ($-73,100) | Tax impact: $-16,270
+2026-04-16 13:41:27,687 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 13:41:27,687 | INFO     |     Portfolio impact: -4.1% ($-20,500) | Tax impact: $-7,140
+2026-04-16 13:41:27,691 | INFO     |   Expected weighted loss: $-31,460
+2026-04-16 13:41:27,692 | INFO     |   Worst case: Credit Crisis ($-73,100)
+2026-04-16 13:41:27,728 | INFO     | Stress test saved to: signals\output\stress_20260416_134127.json
+2026-04-16 13:41:27,742 | INFO     | Loading data for memo generation...
+2026-04-16 13:41:27,746 | INFO     | Loaded signals from run_20260416_121352.json
+2026-04-16 13:41:27,750 | INFO     | Loaded stress test from stress_20260416_132323.json
+2026-04-16 13:41:27,750 | INFO     | Calling Claude to generate analyst memo...
+2026-04-16 13:42:23,357 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 13:42:23,357 | INFO     | Memo saved to: C:\Users\guilh\stress-test-app\backend\..\portfolio_stress_engine\reports\output\memo_20260416_134223.txt
+2026-04-16 16:44:42,226 | INFO     | ============================================================
+2026-04-16 16:44:42,226 | INFO     | Portfolio Stress Engine — Run 20260416_164442
+2026-04-16 16:44:42,228 | INFO     | Hours back: 24 | Claude: True
+2026-04-16 16:44:42,228 | INFO     | ============================================================
+2026-04-16 16:44:42,228 | INFO     | 
+[1/4] Pulling FRED macro data...
+2026-04-16 16:44:42,233 | INFO     | Fetching macro indicators from FRED...
+2026-04-16 16:44:42,847 | INFO     |   FEDFUNDS: 3.64 % (0.0) as of 2026-03-01
+2026-04-16 16:44:43,430 | INFO     |   CPIAUCSL: 330.293 Index (+2.833) as of 2026-03-01
+2026-04-16 16:44:44,031 | INFO     |   UNRATE: 4.3 % (-0.1) as of 2026-03-01
+2026-04-16 16:44:44,705 | ERROR    | FRED request failed: 500 Server Error: Internal Server Error for url: https://api.stlouisfed.org/fred/series/observations?series_id=GDP&observation_start=2026-01-16&sort_order=desc&limit=5&api_key=c3aa2595ae67edb1652dffccc710dd5a&file_type=json
+2026-04-16 16:44:44,707 | WARNING  | No data returned for GDP
+2026-04-16 16:44:45,387 | INFO     |   T10YIE: 2.39 % (+0.02) as of 2026-04-15
+2026-04-16 16:44:46,090 | INFO     |   DGS10: 4.29 % (+0.03) as of 2026-04-15
+2026-04-16 16:44:46,766 | INFO     |   BAMLH0A0HYM2: 2.85 bps (+0.01) as of 2026-04-15
+2026-04-16 16:44:46,766 | INFO     | FRED pull complete: 6 series fetched.
+2026-04-16 16:44:46,766 | INFO     | 
+[2/4] Pulling SEC EDGAR filings...
+2026-04-16 16:44:46,792 | INFO     | Fetching SEC filings (last 7 days)...
+2026-04-16 16:44:46,793 | INFO     |   Fetching AAPL (CIK 0000320193)...
+2026-04-16 16:44:47,637 | INFO     |     >> 0 filing(s) found
+2026-04-16 16:44:47,638 | INFO     |   Fetching MSFT (CIK 0000789019)...
+2026-04-16 16:44:48,366 | INFO     |     >> 0 filing(s) found
+2026-04-16 16:44:48,367 | INFO     |   Fetching JPM (CIK 0000019617)...
+2026-04-16 16:44:49,430 | INFO     |     >> 2 filing(s) found
+2026-04-16 16:44:49,430 | INFO     |   Fetching XOM (CIK 0000034088)...
+2026-04-16 16:44:50,309 | INFO     |     >> 0 filing(s) found
+2026-04-16 16:44:50,310 | INFO     |   Fetching JNJ (CIK 0000200406)...
+2026-04-16 16:44:51,024 | INFO     |     >> 1 filing(s) found
+2026-04-16 16:44:51,024 | INFO     |   Fetching AMZN (CIK 0001018724)...
+2026-04-16 16:44:51,718 | INFO     |     >> 1 filing(s) found
+2026-04-16 16:44:51,718 | INFO     |   Fetching NEE (CIK 0000753308)...
+2026-04-16 16:44:52,459 | INFO     |     >> 0 filing(s) found
+2026-04-16 16:44:52,460 | INFO     | SEC pull complete: 4 total filing(s).
+2026-04-16 16:44:52,460 | INFO     | 
+[3/4] Pulling news feeds...
+2026-04-16 16:44:52,512 | INFO     | Fetching news feeds...
+2026-04-16 16:44:52,545 | INFO     |   Reuters Business: 0 stories
+2026-04-16 16:44:53,749 | INFO     |   CNBC Markets: 16 stories
+2026-04-16 16:44:54,396 | INFO     |   Federal Reserve Press Releases: 1 stories
+2026-04-16 16:45:05,194 | INFO     |   U.S. Treasury Press Releases: 0 stories
+2026-04-16 16:45:05,797 | INFO     |   BLS News Releases: 0 stories
+2026-04-16 16:45:06,481 | INFO     |   MarketWatch Top Stories: 10 stories
+2026-04-16 16:45:07,186 | INFO     |   Yahoo AAPL: 20 stories
+2026-04-16 16:45:07,674 | INFO     |   Yahoo MSFT: 20 stories
+2026-04-16 16:45:08,158 | INFO     |   Yahoo JPM: 20 stories
+2026-04-16 16:45:08,658 | INFO     |   Yahoo XOM: 9 stories
+2026-04-16 16:45:09,149 | INFO     |   Yahoo JNJ: 8 stories
+2026-04-16 16:45:09,630 | INFO     |   Yahoo AMZN: 20 stories
+2026-04-16 16:45:10,160 | INFO     |   Yahoo NEE: 1 stories
+2026-04-16 16:45:10,643 | INFO     |   Yahoo GLD: 5 stories
+2026-04-16 16:45:11,131 | INFO     |   Yahoo TLT: 0 stories
+2026-04-16 16:45:11,638 | INFO     |   Yahoo LQD: 0 stories
+2026-04-16 16:45:12,128 | INFO     |   Yahoo BTC: 4 stories
+2026-04-16 16:45:12,615 | INFO     |   Yahoo VNQ: 1 stories
+2026-04-16 16:45:12,917 | INFO     | News pull complete: 121 stories (88 flagged for Claude)
+2026-04-16 16:45:12,917 | INFO     | 
+[4/4] Running Claude signal classification...
+2026-04-16 16:45:12,929 | INFO     |   Events queued: 98
+2026-04-16 16:45:12,931 | INFO     | Classifying 30 events with Claude...
+2026-04-16 16:45:12,932 | INFO     |   [1/30] Big Bank Earnings Show Consumers Are on Solid Ground—Against All Odds...
+2026-04-16 16:45:20,669 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:20,670 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'AMZN', 'MSFT', 'TLT']
+2026-04-16 16:45:20,670 | INFO     |   [2/30] Zacks Earnings Trends Highlights: JPMorgan, Wells Fargo and Citigroup...
+2026-04-16 16:45:30,588 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:30,589 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'XOM', 'TLT', 'LQD']
+2026-04-16 16:45:30,590 | INFO     |   [3/30] The Zacks Analyst Blog Highlights Exxon Mobil, Chevron and BP...
+2026-04-16 16:45:35,871 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:35,880 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 16:45:35,880 | INFO     |   [4/30] How J&J plans to hit $100B in revenue this year...
+2026-04-16 16:45:41,505 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:41,510 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 16:45:41,510 | INFO     |   [5/30] 3 Best Vanguard Dividend ETFs for Reliable Passive Income in 2026...
+2026-04-16 16:45:48,280 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:48,284 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['VNQ', 'XOM']
+2026-04-16 16:45:48,284 | INFO     |   [6/30] Is Eni Positioned to Gain From the Ongoing Strength in Crude Prices?...
+2026-04-16 16:45:53,557 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:53,558 | INFO     |   >> BULLISH | urgency: watch | affects: ['XOM']
+2026-04-16 16:45:53,559 | INFO     |   [7/30] This asset management stock is poised for a turnaround as AI, private ...
+2026-04-16 16:45:58,856 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:45:58,857 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM']
+2026-04-16 16:45:58,857 | INFO     |   [8/30] J&J Targets Double-Digit Growth by 2030 Despite Stelara Drag...
+2026-04-16 16:46:04,590 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:04,593 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 16:46:04,594 | INFO     |   [9/30] Apple CEO Tim Cook Just Bought Another 25,000 Shares of Nike Stock. Sh...
+2026-04-16 16:46:08,720 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:08,720 | INFO     |   >> NEUTRAL | urgency: watch | affects: []
+2026-04-16 16:46:08,720 | INFO     |   [10/30] ExxonMobil to Release First Quarter 2026 Financial Results...
+2026-04-16 16:46:13,521 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:13,521 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['XOM']
+2026-04-16 16:46:13,521 | INFO     |   [11/30] Lumen & Amazon Web Services Partner to Simplify Cloud Connectivity...
+2026-04-16 16:46:18,871 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:18,871 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:46:18,871 | INFO     |   [12/30] 3 Energy Stocks For Steady Passive Income...
+2026-04-16 16:46:30,139 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:30,139 | INFO     |   >> MIXED | urgency: this_week | affects: ['XOM', 'TLT', 'LQD', 'GLD', 'VNQ']
+2026-04-16 16:46:30,139 | INFO     |   [13/30] CoreWeave Taps US Junk-Debt Market Again With Bond Reopening...
+2026-04-16 16:46:37,580 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:37,582 | INFO     |   >> BULLISH | urgency: watch | affects: ['JPM', 'MSFT']
+2026-04-16 16:46:37,582 | INFO     |   [14/30] Oracle’s New AWS Partnership Just Put It Ahead of Azure and Google Clo...
+2026-04-16 16:46:44,424 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:44,425 | INFO     |   >> MIXED | urgency: watch | affects: ['MSFT', 'AMZN']
+2026-04-16 16:46:44,426 | INFO     |   [15/30] Why I Can’t Stop Buying Amazon Stock...
+2026-04-16 16:46:50,754 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:50,754 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:46:50,754 | INFO     |   [16/30] Coca-Cola vs. Johnson & Johnson: The Safest Dividend on Wall Street Mi...
+2026-04-16 16:46:55,954 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:46:55,959 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 16:46:55,959 | INFO     |   [17/30] FCC Chair Brendan Carr Gives Nod To Amazon-Globalstar Deal As Satellit...
+2026-04-16 16:47:00,870 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:00,870 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN']
+2026-04-16 16:47:00,870 | INFO     |   [18/30] Jim Cramer Reveals Why Apple (AAPL) Stock is Worth it...
+2026-04-16 16:47:06,543 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:06,545 | INFO     |   >> NEUTRAL | urgency: watch | affects: ['AAPL']
+2026-04-16 16:47:06,545 | INFO     |   [19/30] Jim Cramer Reveals What Amazon’s (AMZN) Closely Held Secret Is...
+2026-04-16 16:47:13,637 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:13,637 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:47:13,637 | INFO     |   [20/30] Oracle Stock Jumps on Amazon AWS Cloud Deal...
+2026-04-16 16:47:19,254 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:19,274 | INFO     |   >> MIXED | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:47:19,274 | INFO     |   [21/30] DOCU Stock: Strong Growth Tailwinds but Risks Keep Outlook Balanced...
+2026-04-16 16:47:30,153 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:30,153 | INFO     |   >> NEUTRAL | urgency: watch | affects: []
+2026-04-16 16:47:30,153 | INFO     |   [22/30] 3 Dividend Aristocrat ETFs to Buy Before 2026 Markets Shift...
+2026-04-16 16:47:39,929 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:39,932 | INFO     |   >> MIXED | urgency: watch | affects: ['TLT', 'LQD', 'JPM', 'JNJ']
+2026-04-16 16:47:39,932 | INFO     |   [23/30] Oracle Expands AWS Tie-Up to Deepen Multicloud Push...
+2026-04-16 16:47:45,549 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:45,560 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:47:45,560 | INFO     |   [24/30] Update: Gold Edges Lower, Remaining Rangebound on Inflation Worries...
+2026-04-16 16:47:55,946 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:47:55,946 | INFO     |   >> MIXED | urgency: watch | affects: ['GLD', 'TLT', 'LQD', 'VNQ', 'JPM']
+2026-04-16 16:47:55,946 | INFO     |   [25/30] MacBook Neo is allegedly selling too fast, and Apple wants more units ...
+2026-04-16 16:48:01,906 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:01,906 | INFO     |   >> BULLISH | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 16:48:01,908 | INFO     |   [26/30] Adding bitcoin alongside gold to your portfolio juiced returns and did...
+2026-04-16 16:48:08,230 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:08,230 | INFO     |   >> BULLISH | urgency: watch | affects: ['BTC', 'GLD']
+2026-04-16 16:48:08,230 | INFO     |   [27/30] TSMC’s Results Weren’t a Great Sign for Apple...
+2026-04-16 16:48:16,168 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:16,168 | INFO     |   >> BEARISH | urgency: watch | affects: ['AAPL', 'MSFT']
+2026-04-16 16:48:16,168 | INFO     |   [28/30] This "Boring" Dividend King Is Quietly Turning Into a Growth Machine...
+2026-04-16 16:48:21,405 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:21,407 | INFO     |   >> BULLISH | urgency: watch | affects: ['JNJ']
+2026-04-16 16:48:21,407 | INFO     |   [29/30] Sarat Sethi is watching this 'Magnificent Seven' stock...
+2026-04-16 16:48:27,180 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:27,182 | INFO     |   >> BULLISH | urgency: watch | affects: ['AMZN', 'MSFT']
+2026-04-16 16:48:27,183 | INFO     |   [30/30] Jamie Dimon Sells $40 Million of JPMorgan Stock...
+2026-04-16 16:48:33,040 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:48:33,049 | INFO     |   >> BEARISH | urgency: watch | affects: ['JPM']
+2026-04-16 16:48:33,049 | INFO     | Classification complete: 30 signals generated.
+2026-04-16 16:48:33,055 | INFO     | 
+Output saved to: signals\output\run_20260416_164442.json
+2026-04-16 16:48:33,058 | INFO     | Run complete in 230s.
+2026-04-16 16:48:33,080 | INFO     | Auto-loaded 30 signals from run_20260416_164442.json
+2026-04-16 16:48:33,080 | INFO     | Running stress test across all 4 scenarios...
+2026-04-16 16:48:33,080 | INFO     |   Running scenario: Rate Shock...
+2026-04-16 16:48:33,080 | INFO     |     Portfolio impact: -7.45% ($-37,225) | Tax impact: $-7,925
+2026-04-16 16:48:33,080 | INFO     |   Running scenario: Recession...
+2026-04-16 16:48:33,080 | INFO     |     Portfolio impact: -14.61% ($-73,025) | Tax impact: $-17,080
+2026-04-16 16:48:33,080 | INFO     |   Running scenario: Credit Crisis...
+2026-04-16 16:48:33,080 | INFO     |     Portfolio impact: -15.29% ($-76,425) | Tax impact: $-16,680
+2026-04-16 16:48:33,080 | INFO     |   Running scenario: Inflation Spike...
+2026-04-16 16:48:33,080 | INFO     |     Portfolio impact: -4.76% ($-23,825) | Tax impact: $-7,700
+2026-04-16 16:48:33,080 | INFO     |   Expected weighted loss: $-33,788
+2026-04-16 16:48:33,080 | INFO     |   Worst case: Credit Crisis ($-76,425)
+2026-04-16 16:48:33,097 | INFO     | Stress test saved to: signals\output\stress_20260416_164833.json
+2026-04-16 16:48:33,106 | INFO     | Loading data for memo generation...
+2026-04-16 16:48:33,119 | INFO     | Loaded signals from run_20260416_121352.json
+2026-04-16 16:48:33,129 | INFO     | Loaded stress test from stress_20260416_132323.json
+2026-04-16 16:48:33,129 | INFO     | Calling Claude to generate analyst memo...
+2026-04-16 16:49:20,169 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:49:20,176 | INFO     | Memo saved to: C:\Users\guilh\stress-test-app\backend\..\portfolio_stress_engine\reports\output\memo_20260416_164920.txt
+2026-04-16 16:54:51,116 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:54:57,978 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:55:09,436 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 16:55:20,408 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 17:12:28,995 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 17:12:38,084 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 17:12:48,861 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-04-16 17:12:57,838 | INFO     | HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
