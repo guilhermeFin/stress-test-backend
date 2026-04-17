@@ -27,7 +27,10 @@ async def stress_test(
     scenario: str = Form(...),
 ):
     contents = await file.read()
-    df = pd.read_excel(io.BytesIO(contents))
+    if file.filename and file.filename.endswith('.csv'):
+        df = pd.read_csv(io.BytesIO(contents))
+    else:
+        df = pd.read_excel(io.BytesIO(contents))
     df.columns = df.columns.str.lower().str.strip()
     tickers = df['ticker'].tolist()
     live_data = fetch_live_data(tickers)
@@ -117,4 +120,5 @@ async def get_memo():
 
 if __name__ == '__main__':
     import uvicorn
-    uvicorn.run('main:app', host='0.0.0.0', port=8000, reload=True)
+    port = int(os.environ.get('PORT', 8080))
+    uvicorn.run('main:app', host='0.0.0.0', port=port, reload=False)
