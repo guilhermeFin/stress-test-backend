@@ -38,6 +38,7 @@ HISTORICAL_SCENARIOS = {
     },
 }
 
+
 def simple_parse(text):
     text_lower = text.lower()
     market_shock = 0
@@ -64,7 +65,8 @@ def simple_parse(text):
         'sector_shocks': {},
         'rate_shock': rate_shock,
         'inflation_shock': 0,
-        'severity_label': 'Extreme' if abs(market_shock) > 0.35 else ('Severe' if abs(market_shock) > 0.25 else 'Moderate'),
+        'severity_label': 'Extreme' if abs(market_shock) > 0.35 else (
+            'Severe' if abs(market_shock) > 0.25 else 'Moderate'),
     }
 
 
@@ -72,7 +74,6 @@ def parse_scenario_with_ai(scenario_text: str) -> dict:
     api_key = os.getenv('ANTHROPIC_API_KEY')
 
     if not api_key:
-        print("No API key found, using simple parser")
         return simple_parse(scenario_text)
 
     try:
@@ -90,92 +91,158 @@ Return ONLY valid JSON with these keys:
 Return only the JSON object, nothing else. No markdown, no backticks.'''
 
         message = client.messages.create(
-            model='claude-opus-4-6',
+            model='claude-sonnet-4-5',
             max_tokens=500,
             messages=[{'role': 'user', 'content': prompt}]
         )
 
         text = message.content[0].text.strip()
-
-        # Remove markdown code blocks if present
         if '```' in text:
             text = re.sub(r'```(?:json)?', '', text).strip()
-
         return json.loads(text)
 
     except Exception as e:
-        print(f"Claude parsing failed: {e}, using fallback parser")
+        print(f"Claude parsing failed: {e}, using fallback")
         return simple_parse(scenario_text)
 
 
+def _safe_float(val, default=0.0) -> float:
+    """Safely convert a value to float, returning default if missing."""
+    try:
+        if val is None or (isinstance(val, float) and np.isnan(val)):
+            return default
+        return float(val)
+    except (ValueError, TypeError):
+        return default
+
+
 def run_stress_test(df: pd.DataFrame, live_data: dict, scenario_text: str) -> dict:
-    scenario = parse_scenario_with_ai(scenario_text)
-
-    market_shock = scenario.get('market_shock', 0)
+    scenario      = parse_scenario_with_ai(scenario_text)
+    market_shock  = scenario.get('market_shock', 0)
     sector_shocks = scenario.get('sector_shocks', {})
-    rate_shock = scenario.get('rate_shock', 0)
+    rate_shock    = scenario.get('rate_shock', 0)
 
-    positions = []
-    total_value = 0
-    stressed_value = 0
+    # Normalize column names
+    df.columns = df.columns.str.lower().str.strip()
+
+    positions    = []
+    total_value  = 0
+    stressed_total = 0
 
     for _, row in df.iterrows():
-        ticker = row['ticker']
-        weight = float(row['weight']) / 100
-        value = float(row.get('value', 10000))
+        ticker = str(row.get('ticker', '')).strip().upper()
+        if not ticker:
+            continue
 
-        stock_data = live_data.get(ticker, {})
-        beta = stock_data.get('beta', 1.0)
-        sector = stock_data.get('sector', 'Unknown')
+        # ── Value: use market_value if present, else quantity*price, else value ──
+        market_value = _safe_float(row.get('market_value'))
+        quantity     = _safe_float(row.get('quantity'))
+        price        = _safe_float(row.get('price'))
+
+        if market_value > 0:
+            value = market_value
+        elif quantity > 0 and price > 0:
+            value = quantity * price
+        else:
+            value = _safe_float(row.get('value'), default=10_000)
+
+        # ── Weight: use column if present, else derive from value later ──
+        weight_raw = _safe_float(row.get('weight'))
+
+        # ── New enrichment fields ──
+        cost_basis         = _safe_float(row.get('cost_basis'), default=value)
+        unrealized_gl      = _safe_float(row.get('unrealized_gain_loss'),
+                                          default=value - cost_basis)
+        asset_class        = str(row.get('asset_class', '')).strip()
+        currency           = str(row.get('currency', 'USD')).strip()
+        geography          = str(row.get('geography', 'US')).strip()
+        account_type       = str(row.get('account_type', 'taxable')).strip()
+        position_name      = str(row.get('name', ticker)).strip()
+
+        # ── Live data enrichment ──
+        stock_data    = live_data.get(ticker, {})
+        beta          = stock_data.get('beta', 1.0) or 1.0
+        sector        = (str(row.get('sector', '')).strip()
+                         or stock_data.get('sector', 'Unknown'))
+        live_name     = stock_data.get('name', ticker)
+        name          = position_name if position_name and position_name != ticker else live_name
         daily_returns = stock_data.get('daily_returns', [])
 
-        beta_adj_market_shock = market_shock * beta
-        sector_adj_shock = sector_shocks.get(sector, 0)
-        rate_sensitivity = -5 * rate_shock if sector in ['Utilities', 'Real Estate'] else -2 * rate_shock
+        # ── Shock calculation ──
+        beta_adj_shock    = market_shock * beta
+        sector_adj_shock  = sector_shocks.get(sector, 0)
+        rate_sensitivity  = (
+            -5 * rate_shock if sector in ['Utilities', 'Real Estate', 'Fixed Income']
+            else -2 * rate_shock
+        )
 
-        total_shock = beta_adj_market_shock + sector_adj_shock + rate_sensitivity
+        total_shock = beta_adj_shock + sector_adj_shock + rate_sensitivity
         total_shock = max(total_shock, -0.99)
 
+        # ── VaR ──
         if len(daily_returns) > 30:
-            var_95 = float(np.percentile(daily_returns, 5))
-            cvar_95 = float(np.mean([r for r in daily_returns if r <= var_95]))
+            var_95  = float(np.percentile(daily_returns, 5))
         else:
-            var_95 = -0.02
-            cvar_95 = -0.03
+            var_95  = -0.02
 
-        stressed_position_value = value * (1 + total_shock)
-        loss = stressed_position_value - value
+        # ── P&L ──
+        stressed_value     = value * (1 + total_shock)
+        loss               = stressed_value - value
+        post_stress_ugl    = stressed_value - cost_basis
+        tax_impact         = round(loss * 0.20, 2) if loss < 0 else 0
 
-        total_value += value
-        stressed_value += stressed_position_value
+        total_value    += value
+        stressed_total += stressed_value
 
         positions.append({
-            'ticker': ticker,
-            'name': stock_data.get('name', ticker),
-            'sector': sector,
-            'weight': round(weight * 100, 2),
-            'value': round(value, 2),
-            'stressed_value': round(stressed_position_value, 2),
-            'loss': round(loss, 2),
-            'loss_pct': round(total_shock * 100, 2),
-            'var_95': round(var_95 * 100, 2),
-            'cvar_95': round(cvar_95 * 100, 2),
-            'beta': round(beta, 2),
-            'total_shock_pct': round(total_shock * 100, 2),
-            'risk_level': 'High' if total_shock < -0.25 else ('Medium' if total_shock < -0.10 else 'Low'),
+            'ticker':            ticker,
+            'name':              name,
+            'sector':            sector,
+            'asset_class':       asset_class,
+            'geography':         geography,
+            'account_type':      account_type,
+            'currency':          currency,
+            'quantity':          quantity,
+            'price':             price,
+            'weight':            round(weight_raw, 2),
+            'value':             round(value, 2),
+            'cost_basis':        round(cost_basis, 2),
+            'unrealized_gl':     round(unrealized_gl, 2),
+            'stressed_value':    round(stressed_value, 2),
+            'loss':              round(loss, 2),
+            'loss_pct':          round(total_shock * 100, 2),
+            'post_stress_ugl':   round(post_stress_ugl, 2),
+            'tax_impact':        tax_impact,
+            'var_95':            round(var_95 * 100, 2),
+            'beta':              round(beta, 2),
+            'risk_level':        (
+                'High' if total_shock < -0.25
+                else 'Medium' if total_shock < -0.10
+                else 'Low'
+            ),
         })
 
-    total_loss = stressed_value - total_value
-    total_loss_pct = (total_loss / total_value * 100) if total_value > 0 else 0
+    # Recalculate weights from value if not provided
+    if total_value > 0:
+        for p in positions:
+            if p['weight'] == 0:
+                p['weight'] = round(p['value'] / total_value * 100, 2)
 
+    total_loss     = stressed_total - total_value
+    total_loss_pct = (total_loss / total_value * 100) if total_value > 0 else 0
+    total_tax      = sum(p['tax_impact'] for p in positions)
+    total_cost     = sum(p['cost_basis'] for p in positions)
+    total_ugl      = sum(p['unrealized_gl'] for p in positions)
+
+    # Sharpe ratio
     all_returns = [r for p in positions
                    for r in live_data.get(p['ticker'], {}).get('daily_returns', [])]
     if all_returns:
-        avg_return = np.mean(all_returns) * 252
-        std_return = np.std(all_returns) * np.sqrt(252)
+        avg_return   = np.mean(all_returns) * 252
+        std_return   = np.std(all_returns) * np.sqrt(252)
         sharpe_before = round((avg_return - 0.05) / std_return, 2) if std_return > 0 else 0
-        stressed_avg = avg_return + total_loss_pct / 100
-        sharpe_after = round((stressed_avg - 0.05) / std_return, 2) if std_return > 0 else 0
+        stressed_avg  = avg_return + total_loss_pct / 100
+        sharpe_after  = round((stressed_avg - 0.05) / std_return, 2) if std_return > 0 else 0
     else:
         sharpe_before = sharpe_after = 0
 
@@ -187,15 +254,18 @@ def run_stress_test(df: pd.DataFrame, live_data: dict, scenario_text: str) -> di
     return {
         'positions': positions,
         'summary': {
-            'total_value': round(total_value, 2),
-            'stressed_value': round(stressed_value, 2),
-            'total_loss': round(total_loss, 2),
-            'total_loss_pct': round(total_loss_pct, 2),
-            'sharpe_before': sharpe_before,
-            'sharpe_after': sharpe_after,
-            'severity_label': scenario.get('severity_label', 'Moderate'),
-            'scenario_text': scenario_text,
-            'parsed_scenario': scenario,
+            'total_value':      round(total_value, 2),
+            'total_cost_basis': round(total_cost, 2),
+            'total_unrealized_gl': round(total_ugl, 2),
+            'stressed_value':   round(stressed_total, 2),
+            'total_loss':       round(total_loss, 2),
+            'total_loss_pct':   round(total_loss_pct, 2),
+            'total_tax_impact': round(total_tax, 2),
+            'sharpe_before':    sharpe_before,
+            'sharpe_after':     sharpe_after,
+            'severity_label':   scenario.get('severity_label', 'Moderate'),
+            'scenario_text':    scenario_text,
+            'parsed_scenario':  scenario,
         },
         'charts': {
             'sector_weights': sector_weights,
@@ -203,5 +273,5 @@ def run_stress_test(df: pd.DataFrame, live_data: dict, scenario_text: str) -> di
                 {'ticker': p['ticker'], 'loss_pct': p['loss_pct']}
                 for p in sorted(positions, key=lambda x: x['loss_pct'])
             ],
-        }
+        },
     }
