@@ -1,124 +1,242 @@
-from fastapi import FastAPI, File, UploadFile, Form
+import asyncio
+import io
+import logging
+import os
+import time
+from contextlib import asynccontextmanager
+from pathlib import Path
+
+import pandas as pd
+import yfinance as yf
+from dotenv import load_dotenv
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-import pandas as pd
-import io, os, json, sys
-from dotenv import load_dotenv
 
-from stress_engine import run_stress_test
-from data_fetcher import fetch_live_data
 from ai_explainer import generate_explanation
+from config import (
+    ALLOWED_EXTENSIONS,
+    ALLOWED_ORIGINS,
+    ANTHROPIC_API_KEY,
+    MARKET_SUMMARY_TTL,
+    MAX_FILE_SIZE_BYTES,
+    PORT,
+    REQUIRED_COLUMNS,
+)
+from data_fetcher import fetch_live_data
 from report_generator import create_pdf_report
+from stress_engine import parse_scenario_with_ai, run_stress_test
 
 load_dotenv()
 
-app = FastAPI(title='Portfolio Stress Test API')
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s  %(levelname)-8s  %(name)s — %(message)s',
+    datefmt='%H:%M:%S',
+)
+logger = logging.getLogger(__name__)
+
+# ── In-memory market summary cache ────────────────────────────────────────────
+_market_cache: dict = {}
+_market_cache_ts: float = 0.0
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    if not ANTHROPIC_API_KEY:
+        logger.error('ANTHROPIC_API_KEY is not set — AI features will be unavailable')
+    else:
+        logger.info('Anthropic API key detected')
+    logger.info('PortfolioStress API ready on port %s', PORT)
+    yield
+
+
+app = FastAPI(title='PortfolioStress API', lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+
+@app.get('/health')
+async def health() -> dict:
+    return {'status': 'ok', 'anthropic_key': bool(ANTHROPIC_API_KEY)}
+
 
 @app.post('/api/stress-test')
 async def stress_test(
     file: UploadFile = File(...),
     scenario: str = Form(...),
-):
+) -> dict:
+    # ── File size check ────────────────────────────────────────────────────────
     contents = await file.read()
-    if file.filename and file.filename.endswith('.csv'):
-        df = pd.read_csv(io.BytesIO(contents))
-    else:
-        df = pd.read_excel(io.BytesIO(contents))
+    if len(contents) > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(status_code=413, detail='File exceeds 10 MB limit')
+
+    # ── Extension check ────────────────────────────────────────────────────────
+    suffix = Path(file.filename or '').suffix.lower()
+    if suffix not in ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=400,
+            detail=f'Unsupported file type "{suffix}". Allowed: {", ".join(ALLOWED_EXTENSIONS)}',
+        )
+
+    # ── Parse DataFrame ────────────────────────────────────────────────────────
+    try:
+        if suffix == '.csv':
+            df = pd.read_csv(io.BytesIO(contents))
+        else:
+            df = pd.read_excel(io.BytesIO(contents))
+    except Exception as exc:
+        logger.warning('File parse error: %s', exc)
+        raise HTTPException(status_code=400, detail=f'Could not read file: {exc}')
+
     df.columns = df.columns.str.lower().str.strip()
-    tickers = df['ticker'].tolist()
-    live_data = fetch_live_data(tickers)
-    results = run_stress_test(df, live_data, scenario)
-    explanation = generate_explanation(results, scenario)
+
+    # ── Column validation ──────────────────────────────────────────────────────
+    missing = REQUIRED_COLUMNS - set(df.columns)
+    if missing:
+        raise HTTPException(
+            status_code=400,
+            detail=f'Missing required column(s): {", ".join(sorted(missing))}',
+        )
+
+    tickers = df['ticker'].dropna().astype(str).str.strip().str.upper().tolist()
+    if not tickers:
+        raise HTTPException(status_code=400, detail='No valid tickers found in file')
+
+    # ── Run analysis concurrently where possible ───────────────────────────────
+    t0 = time.perf_counter()
+    try:
+        live_data, parsed_scenario = await asyncio.gather(
+            fetch_live_data(tickers),
+            parse_scenario_with_ai(scenario),
+        )
+    except Exception as exc:
+        logger.error('Data fetch / scenario parse failed: %s', exc)
+        raise HTTPException(status_code=502, detail='Upstream data fetch failed')
+
+    parsed_scenario['_scenario_text'] = scenario
+
+    try:
+        results = await asyncio.to_thread(run_stress_test, df, live_data, parsed_scenario)
+    except Exception as exc:
+        logger.error('Stress engine failed: %s', exc)
+        raise HTTPException(status_code=500, detail='Stress calculation failed')
+
+    try:
+        explanation = await generate_explanation(results, scenario)
+    except Exception as exc:
+        logger.error('AI explanation failed: %s', exc)
+        explanation = {
+            'advisor_summary':    'AI explanation unavailable.',
+            'client_explanation': 'AI explanation unavailable.',
+            'suggestions':        'AI explanation unavailable.',
+        }
+
+    logger.info('stress-test completed in %.2fs (%d positions)', time.perf_counter() - t0, len(tickers))
     return {
-        'positions': results['positions'],
-        'summary': results['summary'],
-        'charts': results['charts'],
+        'positions':   results['positions'],
+        'summary':     results['summary'],
+        'charts':      results['charts'],
         'explanation': explanation,
     }
 
 
 @app.post('/api/export-pdf')
-async def export_pdf(data: dict):
-    pdf_path = create_pdf_report(data)
-    return FileResponse(pdf_path, filename='stress_test_report.pdf')
+async def export_pdf(data: dict) -> FileResponse:
+    try:
+        pdf_path = await asyncio.to_thread(create_pdf_report, data)
+        return FileResponse(pdf_path, filename='stress_test_report.pdf')
+    except Exception as exc:
+        logger.error('PDF export failed: %s', exc)
+        raise HTTPException(status_code=500, detail='PDF generation failed')
 
 
 @app.get('/api/market-summary')
-async def market_summary():
-    import yfinance as yf
+async def market_summary() -> dict:
+    global _market_cache, _market_cache_ts
+
+    if _market_cache and (time.time() - _market_cache_ts) < MARKET_SUMMARY_TTL:
+        return _market_cache
+
     try:
-        sp500 = yf.Ticker('^GSPC').history(period='2d')['Close']
-        vix   = yf.Ticker('^VIX').history(period='2d')['Close']
-        tnx   = yf.Ticker('^TNX').history(period='2d')['Close']
-        return {
-            'sp500': round(float(sp500.iloc[-1]), 2),
-            'sp500_change': round(float(sp500.pct_change().iloc[-1] * 100), 2),
-            'vix': round(float(vix.iloc[-1]), 2),
-            'yield_10y': round(float(tnx.iloc[-1]), 2),
-        }
-    except:
-        return {'sp500': 0, 'sp500_change': 0, 'vix': 0, 'yield_10y': 0}
+        def _fetch():
+            sp500 = yf.Ticker('^GSPC').history(period='2d')['Close']
+            vix   = yf.Ticker('^VIX').history(period='2d')['Close']
+            tnx   = yf.Ticker('^TNX').history(period='2d')['Close']
+            return {
+                'sp500':        round(float(sp500.iloc[-1]), 2),
+                'sp500_change': round(float(sp500.pct_change().iloc[-1] * 100), 2),
+                'vix':          round(float(vix.iloc[-1]), 2),
+                'yield_10y':    round(float(tnx.iloc[-1]), 2),
+            }
+
+        data = await asyncio.to_thread(_fetch)
+        _market_cache    = data
+        _market_cache_ts = time.time()
+        return data
+    except Exception as exc:
+        logger.warning('market-summary fetch failed: %s', exc)
+        if _market_cache:
+            return _market_cache
+        raise HTTPException(status_code=502, detail='Market data unavailable')
 
 
 @app.get('/api/download-template')
-async def download_template():
-    template_path = os.path.join(os.path.dirname(__file__), 'portfolio_template.xlsx')
+async def download_template() -> FileResponse:
+    template_path = Path(__file__).parent / 'portfolio_template.xlsx'
+    if not template_path.exists():
+        raise HTTPException(status_code=404, detail='Template file not found')
     return FileResponse(
-        template_path,
+        str(template_path),
         filename='portfolio_template.xlsx',
-        media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
     )
 
 
-@app.post('/api/run-pipeline')
-async def run_pipeline_endpoint():
-    engine_path = os.path.join(os.path.dirname(__file__), '..', 'portfolio_stress_engine')
-    sys.path.insert(0, engine_path)
-    try:
-        from run_engine import run_pipeline
-        output = run_pipeline(hours_back=24, use_claude=True)
-        return {
-            'status':  'success',
-            'run_id':  output['run_id'],
-            'summary': output['summary'],
-            'signals': output['signals'],
-        }
-    except Exception as e:
-        return {'status': 'error', 'message': str(e)}
+@app.post('/api/compare-portfolios')
+async def compare_portfolios(
+    file_a: UploadFile = File(...),
+    file_b: UploadFile = File(...),
+    scenario: str = Form(...),
+) -> dict:
+    async def _run_one(upload: UploadFile) -> dict:
+        contents = await upload.read()
+        if len(contents) > MAX_FILE_SIZE_BYTES:
+            raise HTTPException(status_code=413, detail=f'{upload.filename} exceeds 10 MB limit')
+        suffix = Path(upload.filename or '').suffix.lower()
+        if suffix not in ALLOWED_EXTENSIONS:
+            raise HTTPException(status_code=400, detail=f'Unsupported file type: {suffix}')
+        try:
+            df = pd.read_csv(io.BytesIO(contents)) if suffix == '.csv' else pd.read_excel(io.BytesIO(contents))
+        except Exception as exc:
+            raise HTTPException(status_code=400, detail=f'Could not read {upload.filename}: {exc}')
+        df.columns = df.columns.str.lower().str.strip()
+        missing = REQUIRED_COLUMNS - set(df.columns)
+        if missing:
+            raise HTTPException(status_code=400, detail=f'Missing columns in {upload.filename}: {", ".join(sorted(missing))}')
+        tickers   = df['ticker'].dropna().astype(str).str.strip().str.upper().tolist()
+        live_data = await fetch_live_data(tickers)
+        return df, live_data
 
+    parsed_scenario, (df_a, live_a), (df_b, live_b) = await asyncio.gather(
+        parse_scenario_with_ai(scenario),
+        _run_one(file_a),
+        _run_one(file_b),
+    )
+    parsed_scenario['_scenario_text'] = scenario
 
-@app.get('/api/stress-results')
-async def stress_results():
-    engine_path = os.path.join(os.path.dirname(__file__), '..', 'portfolio_stress_engine')
-    sys.path.insert(0, engine_path)
-    try:
-        from signals.stress_test import run_stress_test as run_st
-        results = run_st()
-        return {'status': 'success', 'results': results}
-    except Exception as e:
-        return {'status': 'error', 'message': str(e)}
-
-
-@app.get('/api/memo')
-async def get_memo():
-    engine_path = os.path.join(os.path.dirname(__file__), '..', 'portfolio_stress_engine')
-    sys.path.insert(0, engine_path)
-    try:
-        from reports.memo_generator import generate_memo
-        memo = generate_memo()
-        return {'status': 'success', 'memo': memo}
-    except Exception as e:
-        return {'status': 'error', 'message': str(e)}
+    results_a, results_b = await asyncio.gather(
+        asyncio.to_thread(run_stress_test, df_a, live_a, parsed_scenario),
+        asyncio.to_thread(run_stress_test, df_b, live_b, parsed_scenario),
+    )
+    return {'portfolio_a': results_a, 'portfolio_b': results_b}
 
 
 if __name__ == '__main__':
     import uvicorn
-    port = int(os.environ.get('PORT', 8080))
-    uvicorn.run('main:app', host='0.0.0.0', port=port, reload=False)
+    uvicorn.run('main:app', host='0.0.0.0', port=PORT, reload=False)
