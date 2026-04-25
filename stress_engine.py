@@ -78,28 +78,84 @@ def _simple_parse(text: str) -> dict:
     }
 
 
+_PARSE_SYSTEM = """\
+You are a financial risk analyst specializing in portfolio stress testing for wealth management firms. \
+Your task is to parse natural-language investment stress scenarios into precise structured parameters \
+used by a quantitative risk engine.
+
+## Output Format
+Return ONLY a valid JSON object. No markdown, no code fences, no explanation text, no preamble. \
+The response must parse cleanly with json.loads().
+
+## Required JSON Schema
+{"market_shock": <float>, "sector_shocks": {<sector>: <float>}, "rate_shock": <float>, \
+"inflation_shock": <float>, "severity_label": <string>}
+
+## Field Definitions
+
+### market_shock
+Broad market (S&P 500) move as a decimal. Negative = decline, positive = rally. Range: -0.99 to 0.50.
+Examples: "market crashes 30%" → -0.30 | "equity markets fall 50%" → -0.50 | "mild correction" → -0.10
+If not mentioned: 0.0
+
+### sector_shocks
+Incremental shock BEYOND market_shock for specific GICS sectors only when explicitly mentioned.
+Use only these GICS names: Technology, Financials, Healthcare, Energy, Utilities, Real Estate, \
+Consumer Discretionary, Consumer Staples, Industrials, Materials, Communication Services
+Examples: "banks collapse" → {"Financials": -0.30} | "oil crash" → {"Energy": -0.40}
+If no sector-specific moves mentioned: {}
+
+### rate_shock
+10-year Treasury yield change in decimal (not percentage points). Range: -0.20 to 0.20.
+Examples: "rates rise 200 bps" → 0.02 | "Fed cuts 75 bps" → -0.0075
+If not mentioned: 0.0
+
+### inflation_shock
+Change in annual inflation rate as a decimal. Range: -0.10 to 0.30.
+Examples: "inflation spikes from 3% to 10%" → 0.07 | "deflation sets in" → -0.05
+If not mentioned: 0.0
+
+### severity_label
+Must be exactly one of: "Mild", "Moderate", "Severe", "Extreme"
+Calibration: Mild = loss <10% | Moderate = 10-25% | Severe = 25-35% | Extreme = >35%
+Base on the magnitude of market_shock combined with sector_shocks.
+
+## Handling Named Historical Events
+- "2008 crisis" / "GFC" → market_shock: -0.57, Financials: -0.80, Real Estate: -0.65, severity: Extreme
+- "COVID crash" / "2020 crash" → market_shock: -0.34, Energy: -0.55, severity: Severe
+- "dot-com bust" / "tech bubble" → market_shock: -0.49, Technology: -0.78, severity: Extreme
+- "1987 Black Monday" → market_shock: -0.34, severity: Severe
+- "2022 bear market" → market_shock: -0.19, rate_shock: 0.04, severity: Moderate
+
+## Edge Cases
+- If multiple percentages with no clear attribution: use the largest as market_shock
+- If the scenario is vague or empty: use market_shock: -0.15, severity: "Moderate"
+- Always produce valid parseable JSON regardless of input quality\
+"""
+
+
 async def parse_scenario_with_ai(scenario_text: str) -> dict:
     if not ANTHROPIC_API_KEY:
         return _simple_parse(scenario_text)
 
+    # Truncate to avoid excessively long prompts
+    safe_scenario = scenario_text[:2000].strip()
+
     try:
         client = AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
-        prompt = f'''Parse this investment stress scenario into structured JSON.
-Scenario: {scenario_text}
-
-Return ONLY valid JSON with these keys:
-- market_shock: float (e.g. -0.30 for a 30% crash, 0 if not mentioned)
-- sector_shocks: object mapping sector names to shock floats
-- rate_shock: float (e.g. 0.02 for +2% rate rise)
-- inflation_shock: float
-- severity_label: one of "Mild", "Moderate", "Severe", "Extreme"
-
-Return only the JSON object, nothing else. No markdown, no backticks.'''
 
         message = await client.messages.create(
             model=CLAUDE_FAST_MODEL,
             max_tokens=500,
-            messages=[{'role': 'user', 'content': prompt}],
+            system=[{
+                'type': 'text',
+                'text': _PARSE_SYSTEM,
+                'cache_control': {'type': 'ephemeral'},
+            }],
+            messages=[{
+                'role': 'user',
+                'content': f'Parse this stress scenario:\n\n{safe_scenario}',
+            }],
         )
 
         text = message.content[0].text.strip()

@@ -17,6 +17,8 @@ PORT = int(os.getenv("PORT", 8080))
 
 # ── CORS ──────────────────────────────────────────────────────────────────────
 ALLOWED_ORIGINS = [
+    "https://portfoliostress.com",
+    "https://www.portfoliostress.com",
     "https://stress-test-frontend-three.vercel.app",
     "http://localhost:3000",
     "http://localhost:3001",
@@ -28,6 +30,10 @@ ALLOWED_EXTENSIONS  = {".xlsx", ".csv"}
 
 # ── DataFrame validation ──────────────────────────────────────────────────────
 REQUIRED_COLUMNS = {"ticker"}
+
+# ── Input limits ─────────────────────────────────────────────────────────────
+MAX_ROWS             = 500    # max positions per upload
+MAX_SCENARIO_LENGTH  = 2000   # max chars for scenario text
 
 # ── Cache ─────────────────────────────────────────────────────────────────────
 MARKET_SUMMARY_TTL = 300  # seconds (5 minutes)
