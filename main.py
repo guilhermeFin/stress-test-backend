@@ -2,6 +2,7 @@ import asyncio
 import io
 import logging
 import os
+import re
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -20,6 +21,8 @@ from config import (
     ANTHROPIC_API_KEY,
     MARKET_SUMMARY_TTL,
     MAX_FILE_SIZE_BYTES,
+    MAX_ROWS,
+    MAX_SCENARIO_LENGTH,
     PORT,
     REQUIRED_COLUMNS,
 )
@@ -28,6 +31,20 @@ from report_generator import create_pdf_report
 from stress_engine import parse_scenario_with_ai, run_stress_test
 
 load_dotenv()
+
+# ── Security helpers ───────────────────────────────────────────────────────────
+_FORMULA_START = re.compile(r'^[=+\-@|]')
+_TICKER_RE     = re.compile(r'^[\^A-Z0-9.\-]{1,12}$')
+
+
+def _sanitize_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Strip leading formula-injection characters from all string cells."""
+    for col in df.select_dtypes(include=['object', 'str']).columns:
+        df[col] = df[col].map(
+            lambda v: _FORMULA_START.sub('', v).strip() if isinstance(v, str) else v
+        )
+    return df
+
 
 logging.basicConfig(
     level=logging.INFO,
@@ -71,6 +88,13 @@ async def stress_test(
     file: UploadFile = File(...),
     scenario: str = Form(...),
 ) -> dict:
+    # ── Scenario validation ────────────────────────────────────────────────────
+    scenario = scenario.strip()
+    if not scenario:
+        raise HTTPException(status_code=400, detail='Scenario description is required')
+    if len(scenario) > MAX_SCENARIO_LENGTH:
+        raise HTTPException(status_code=400, detail=f'Scenario too long (max {MAX_SCENARIO_LENGTH} characters)')
+
     # ── File size check ────────────────────────────────────────────────────────
     contents = await file.read()
     if len(contents) > MAX_FILE_SIZE_BYTES:
@@ -92,9 +116,16 @@ async def stress_test(
             df = pd.read_excel(io.BytesIO(contents))
     except Exception as exc:
         logger.warning('File parse error: %s', exc)
-        raise HTTPException(status_code=400, detail=f'Could not read file: {exc}')
+        raise HTTPException(status_code=400, detail='Could not parse the uploaded file. Ensure it is a valid Excel or CSV.')
 
     df.columns = df.columns.str.lower().str.strip()
+
+    # ── Row count cap (prevents zip-bomb / memory DoS) ─────────────────────────
+    if len(df) > MAX_ROWS:
+        raise HTTPException(status_code=400, detail=f'File contains too many rows (max {MAX_ROWS} positions)')
+
+    # ── Formula injection sanitization ─────────────────────────────────────────
+    df = _sanitize_df(df)
 
     # ── Column validation ──────────────────────────────────────────────────────
     missing = REQUIRED_COLUMNS - set(df.columns)
@@ -105,8 +136,9 @@ async def stress_test(
         )
 
     tickers = df['ticker'].dropna().astype(str).str.strip().str.upper().tolist()
+    tickers = [t for t in tickers if _TICKER_RE.match(t)]
     if not tickers:
-        raise HTTPException(status_code=400, detail='No valid tickers found in file')
+        raise HTTPException(status_code=400, detail='No valid ticker symbols found in file')
 
     # ── Run analysis concurrently where possible ───────────────────────────────
     t0 = time.perf_counter()
@@ -146,8 +178,15 @@ async def stress_test(
     }
 
 
+_PDF_MAX_BYTES = 2 * 1024 * 1024  # 2 MB of JSON is already enormous for a report
+
+
 @app.post('/api/export-pdf')
 async def export_pdf(data: dict) -> FileResponse:
+    if not isinstance(data, dict):
+        raise HTTPException(status_code=400, detail='Invalid report data')
+    if len(str(data).encode()) > _PDF_MAX_BYTES:
+        raise HTTPException(status_code=400, detail='Report data too large')
     try:
         pdf_path = await asyncio.to_thread(create_pdf_report, data)
         return FileResponse(pdf_path, filename='stress_test_report.pdf')
@@ -204,6 +243,12 @@ async def compare_portfolios(
     file_b: UploadFile = File(...),
     scenario: str = Form(...),
 ) -> dict:
+    scenario = scenario.strip()
+    if not scenario:
+        raise HTTPException(status_code=400, detail='Scenario description is required')
+    if len(scenario) > MAX_SCENARIO_LENGTH:
+        raise HTTPException(status_code=400, detail=f'Scenario too long (max {MAX_SCENARIO_LENGTH} characters)')
+
     async def _run_one(upload: UploadFile) -> dict:
         contents = await upload.read()
         if len(contents) > MAX_FILE_SIZE_BYTES:
@@ -214,12 +259,17 @@ async def compare_portfolios(
         try:
             df = pd.read_csv(io.BytesIO(contents)) if suffix == '.csv' else pd.read_excel(io.BytesIO(contents))
         except Exception as exc:
-            raise HTTPException(status_code=400, detail=f'Could not read {upload.filename}: {exc}')
+            logger.warning('File parse error (%s): %s', upload.filename, exc)
+            raise HTTPException(status_code=400, detail=f'Could not parse {upload.filename}. Ensure it is a valid Excel or CSV.')
         df.columns = df.columns.str.lower().str.strip()
+        if len(df) > MAX_ROWS:
+            raise HTTPException(status_code=400, detail=f'{upload.filename} contains too many rows (max {MAX_ROWS})')
+        df = _sanitize_df(df)
         missing = REQUIRED_COLUMNS - set(df.columns)
         if missing:
             raise HTTPException(status_code=400, detail=f'Missing columns in {upload.filename}: {", ".join(sorted(missing))}')
         tickers   = df['ticker'].dropna().astype(str).str.strip().str.upper().tolist()
+        tickers   = [t for t in tickers if _TICKER_RE.match(t)]
         live_data = await fetch_live_data(tickers)
         return df, live_data
 
