@@ -26,6 +26,8 @@ from config import (
     PORT,
     REQUIRED_COLUMNS,
 )
+from brazil_data import get_brazil_market_summary
+from brazil_scenarios import brazil_router
 from data_fetcher import fetch_live_data
 from report_generator import create_pdf_report
 from stress_engine import parse_scenario_with_ai, run_stress_test
@@ -76,6 +78,8 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+app.include_router(brazil_router, prefix='/brazil')
 
 
 @app.get('/health')
@@ -223,6 +227,29 @@ async def market_summary() -> dict:
         if _market_cache:
             return _market_cache
         raise HTTPException(status_code=502, detail='Market data unavailable')
+
+
+_brazil_cache: dict = {}
+_brazil_cache_ts: float = 0.0
+
+
+@app.get('/api/brazil-market-summary')
+async def brazil_market_summary() -> dict:
+    global _brazil_cache, _brazil_cache_ts
+
+    if _brazil_cache and (time.time() - _brazil_cache_ts) < MARKET_SUMMARY_TTL:
+        return _brazil_cache
+
+    try:
+        data = await get_brazil_market_summary()
+        _brazil_cache    = data
+        _brazil_cache_ts = time.time()
+        return data
+    except Exception as exc:
+        logger.warning('brazil-market-summary fetch failed: %s', exc)
+        if _brazil_cache:
+            return _brazil_cache
+        raise HTTPException(status_code=502, detail='Brazil market data unavailable')
 
 
 @app.get('/api/download-template')
