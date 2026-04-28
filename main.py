@@ -27,10 +27,10 @@ from config import (
     REQUIRED_COLUMNS,
 )
 from brazil_data import get_brazil_market_summary
-from brazil_scenarios import brazil_router
+from brazil_scenarios import brazil_router, stress_test_portfolio
 from data_fetcher import fetch_live_data
 from report_generator import create_pdf_report
-from stress_engine import parse_scenario_with_ai, run_stress_test
+from stress_engine import parse_scenario_with_ai, run_stress_test, _safe_float
 
 load_dotenv()
 
@@ -250,6 +250,108 @@ async def brazil_market_summary() -> dict:
         if _brazil_cache:
             return _brazil_cache
         raise HTTPException(status_code=502, detail='Brazil market data unavailable')
+
+
+_ASSET_TYPE_MAP = {
+    'equity':         'equity',
+    'stock':          'equity',
+    'fixed income':   'cdb',
+    'fixed_income':   'cdb',
+    'bond':           'cdb',
+    'bonds':          'cdb',
+    'cdb':            'cdb',
+    'lci':            'lci',
+    'lca':            'lca',
+    'fii':            'fii',
+    'real estate':    'fii',
+    'reit':           'fii',
+    'tesouro_selic':  'tesouro_selic',
+    'tesouro selic':  'tesouro_selic',
+    'tesouro_ipca':   'tesouro_ipca',
+    'tesouro ipca':   'tesouro_ipca',
+    'debenture':      'debenture',
+    'cash':           'cdi',
+    'money market':   'cdi',
+    'cdi':            'cdi',
+}
+
+
+def _map_asset_type(asset_class: str) -> str:
+    return _ASSET_TYPE_MAP.get(asset_class.lower().strip(), 'equity')
+
+
+@app.post('/api/brazil-stress-file')
+async def brazil_stress_file(
+    file: UploadFile = File(...),
+    scenario_id: str = Form(...),
+    brl_usd_rate: float = Form(5.20),
+) -> dict:
+    contents = await file.read()
+    if len(contents) > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(status_code=413, detail='File exceeds 10 MB limit')
+
+    suffix = Path(file.filename or '').suffix.lower()
+    if suffix not in ALLOWED_EXTENSIONS:
+        raise HTTPException(status_code=400, detail=f'Unsupported file type "{suffix}"')
+
+    try:
+        df = pd.read_csv(io.BytesIO(contents)) if suffix == '.csv' else pd.read_excel(io.BytesIO(contents))
+    except Exception as exc:
+        logger.warning('Brazil stress file parse error: %s', exc)
+        raise HTTPException(status_code=400, detail='Could not parse the uploaded file')
+
+    df.columns = df.columns.str.lower().str.strip()
+
+    if len(df) > MAX_ROWS:
+        raise HTTPException(status_code=400, detail=f'File contains too many rows (max {MAX_ROWS})')
+
+    df = _sanitize_df(df)
+
+    if 'ticker' not in df.columns:
+        raise HTTPException(status_code=400, detail='Missing required column: ticker')
+
+    positions = []
+    for row in df.itertuples(index=False):
+        rd = row._asdict()
+        ticker = str(rd.get('ticker', '')).strip().upper()
+        if not ticker or not _TICKER_RE.match(ticker):
+            continue
+
+        market_value = _safe_float(rd.get('market_value'))
+        quantity     = _safe_float(rd.get('quantity'))
+        price        = _safe_float(rd.get('price'))
+
+        if market_value > 0:
+            value = market_value
+        elif quantity > 0 and price > 0:
+            value = quantity * price
+        else:
+            value = _safe_float(rd.get('value'), 10_000.0)
+
+        asset_class = str(rd.get('asset_class', 'equity')).strip()
+        currency    = str(rd.get('currency', 'USD')).strip().upper()
+
+        positions.append({
+            'ticker':     ticker,
+            'value':      value,
+            'asset_type': _map_asset_type(asset_class),
+            'currency':   currency,
+        })
+
+    if not positions:
+        raise HTTPException(status_code=400, detail='No valid positions found in file')
+
+    try:
+        result = await asyncio.to_thread(
+            stress_test_portfolio, positions, scenario_id, brl_usd_rate
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error('Brazil stress engine failed: %s', exc)
+        raise HTTPException(status_code=500, detail='Brazil stress calculation failed')
+
+    return result
 
 
 @app.get('/api/download-template')
