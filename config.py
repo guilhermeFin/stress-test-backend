@@ -5,8 +5,8 @@ load_dotenv()
 
 # ── Claude models ─────────────────────────────────────────────────────────────
 # Change these env vars to override without touching code.
-CLAUDE_FAST_MODEL  = os.getenv("CLAUDE_FAST_MODEL",  "claude-sonnet-4-5")
-CLAUDE_SMART_MODEL = os.getenv("CLAUDE_SMART_MODEL", "claude-opus-4-6")
+CLAUDE_FAST_MODEL  = os.getenv("CLAUDE_FAST_MODEL",  "claude-3-5-haiku-20241022")
+CLAUDE_SMART_MODEL = os.getenv("CLAUDE_SMART_MODEL", "claude-3-5-sonnet-20241022")
 
 # ── API keys ──────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
